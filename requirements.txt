@@ -1,0 +1,2 @@
+# Odoo 19 / Odoo.sh: letterhead PDF first page -> PNG (optional; module degrades if missing)
+PyMuPDF>=1.24.0,<2

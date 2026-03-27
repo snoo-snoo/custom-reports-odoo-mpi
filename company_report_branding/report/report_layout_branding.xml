@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="crb_render_logo" name="CRB logo by mode">
+        <img t-if="company.crb_logo_mode == 'standard' and company.logo"
+             t-attf-class="{{ logo_class }}"
+             t-att-src="image_data_uri(company.logo)" alt="Logo"/>
+        <img t-elif="company.crb_logo_mode == 'custom' and company.crb_logo_custom"
+             t-attf-class="{{ logo_class }}"
+             t-att-src="image_data_uri(company.crb_logo_custom)" alt="Logo"/>
+    </template>
+
+    <template id="crb_report_layout_head" inherit_id="web.report_layout">
+        <xpath expr="//head" position="inside">
+            <t t-out="crb_report_extra_head"/>
+        </xpath>
+    </template>
+
+    <!-- external_layout_standard -->
+    <template id="crb_external_layout_standard" inherit_id="web.external_layout_standard">
+        <xpath expr="//img[hasclass('o_company_logo_small')]" position="replace">
+            <t t-set="logo_class" t-value="'o_company_logo_small'"/>
+            <t t-call="company_report_branding.crb_render_logo"/>
+        </xpath>
+        <xpath expr="//div[hasclass('article') and hasclass('o_report_layout_standard')]/t[@t-out='0']" position="replace">
+            <div class="crb-report-root crb-article-inner" t-att-style="company.crb_get_article_wrapper_style()">
+                <t t-out="0"/>
+            </div>
+        </xpath>
+        <xpath expr="//div[hasclass('o_footer_content') and hasclass('d-flex') and hasclass('border-top')]/div[@t-field='company.report_footer']" position="replace">
+            <t t-if="company.crb_footer_mode == 'standard'">
+                <div class="flex-grow-1 text-start me-2" t-field="company.report_footer"/>
+            </t>
+            <t t-elif="company.crb_footer_mode == 'custom'">
+                <div class="flex-grow-1 text-start me-2" t-out="company.crb_footer_html"/>
+            </t>
+            <t t-else="">
+                <div class="flex-grow-1 text-start me-2"/>
+            </t>
+        </xpath>
+    </template>
+
+    <!-- external_layout_striped -->
+    <template id="crb_external_layout_striped" inherit_id="web.external_layout_striped">
+        <xpath expr="//img[hasclass('o_company_logo_big')]" position="replace">
+            <t t-set="logo_class" t-value="'o_company_logo_big'"/>
+            <t t-call="company_report_branding.crb_render_logo"/>
+        </xpath>
+        <xpath expr="//div[hasclass('article') and hasclass('o_report_layout_striped')]/t[@t-out='0']" position="replace">
+            <div class="crb-report-root crb-article-inner" t-att-style="company.crb_get_article_wrapper_style()">
+                <t t-out="0"/>
+            </div>
+        </xpath>
+        <xpath expr="//div[hasclass('o_footer_content') and hasclass('border-top') and hasclass('text-center')]/div[@t-field='company.report_footer']" position="replace">
+            <t t-if="company.crb_footer_mode == 'standard'">
+                <div t-field="company.report_footer"/>
+            </t>
+            <t t-elif="company.crb_footer_mode == 'custom'">
+                <div t-out="company.crb_footer_html"/>
+            </t>
+            <t t-else="">
+                <div/>
+            </t>
+        </xpath>
+    </template>
+
+    <!-- external_layout_boxed -->
+    <template id="crb_external_layout_boxed" inherit_id="web.external_layout_boxed">
+        <xpath expr="//img[hasclass('o_company_logo_big')]" position="replace">
+            <t t-set="logo_class" t-value="'o_company_logo_big'"/>
+            <t t-call="company_report_branding.crb_render_logo"/>
+        </xpath>
+        <xpath expr="//div[hasclass('article') and hasclass('o_report_layout_boxed')]/t[@t-out='0']" position="replace">
+            <div class="crb-report-root crb-article-inner" t-att-style="company.crb_get_article_wrapper_style()">
+                <t t-out="0"/>
+            </div>
+        </xpath>
+        <xpath expr="//div[hasclass('o_footer_content') and contains(@t-attf-class, 'border-top')]/span[@t-field='company.report_footer']" position="replace">
+            <t t-if="company.crb_footer_mode == 'standard'">
+                <span t-field="company.report_footer"/>
+            </t>
+            <t t-elif="company.crb_footer_mode == 'custom'">
+                <span t-out="company.crb_footer_html"/>
+            </t>
+            <t t-else="">
+                <span/>
+            </t>
+        </xpath>
+    </template>
+
+    <!-- external_layout_bold -->
+    <template id="crb_external_layout_bold" inherit_id="web.external_layout_bold">
+        <xpath expr="//img[hasclass('o_company_logo_big')]" position="replace">
+            <t t-set="logo_class" t-value="'o_company_logo_big'"/>
+            <t t-call="company_report_branding.crb_render_logo"/>
+        </xpath>
+        <xpath expr="//div[hasclass('article') and hasclass('o_report_layout_bold')]/t[@t-out='0']" position="replace">
+            <div class="crb-report-root crb-article-inner" t-att-style="company.crb_get_article_wrapper_style()">
+                <t t-out="0"/>
+            </div>
+        </xpath>
+        <xpath expr="//div[hasclass('o_footer_content') and contains(@t-attf-class, 'border-top')]/span[@t-field='company.report_footer']" position="replace">
+            <t t-if="company.crb_footer_mode == 'standard'">
+                <span t-field="company.report_footer"/>
+            </t>
+            <t t-elif="company.crb_footer_mode == 'custom'">
+                <span t-out="company.crb_footer_html"/>
+            </t>
+            <t t-else="">
+                <span/>
+            </t>
+        </xpath>
+    </template>
+
+    <!-- external_layout_folder -->
+    <template id="crb_external_layout_folder" inherit_id="web.external_layout_folder">
+        <xpath expr="//img[hasclass('o_company_logo_big')]" position="replace">
+            <t t-set="logo_class" t-value="'o_company_logo_big mb-2'"/>
+            <t t-call="company_report_branding.crb_render_logo"/>
+        </xpath>
+        <xpath expr="//div[hasclass('article') and hasclass('o_report_layout_folder')]/t[@t-out='0']" position="replace">
+            <div class="crb-report-root crb-article-inner" t-att-style="company.crb_get_article_wrapper_style()">
+                <t t-out="0"/>
+            </div>
+        </xpath>
+        <xpath expr="//div[hasclass('o_footer_content') and hasclass('d-flex') and hasclass('border-top')]/div[@t-field='company.report_footer']" position="replace">
+            <t t-if="company.crb_footer_mode == 'standard'">
+                <div class="flex-grow-1 me-2 text-start" t-field="company.report_footer"/>
+            </t>
+            <t t-elif="company.crb_footer_mode == 'custom'">
+                <div class="flex-grow-1 me-2 text-start" t-out="company.crb_footer_html"/>
+            </t>
+            <t t-else="">
+                <div class="flex-grow-1 me-2 text-start"/>
+            </t>
+        </xpath>
+    </template>
+
+    <!-- external_layout_wave -->
+    <template id="crb_external_layout_wave" inherit_id="web.external_layout_wave">
+        <xpath expr="//img[hasclass('o_company_logo') and hasclass('mb-2')]" position="replace">
+            <t t-set="logo_class" t-value="'o_company_logo mb-2'"/>
+            <t t-call="company_report_branding.crb_render_logo"/>
+        </xpath>
+        <xpath expr="//div[hasclass('article') and hasclass('o_report_layout_wave')]/t[@t-out='0']" position="replace">
+            <div class="crb-report-root crb-article-inner" t-att-style="company.crb_get_article_wrapper_style()">
+                <t t-out="0"/>
+            </div>
+        </xpath>
+        <xpath expr="//div[hasclass('o_footer_content') and contains(@t-attf-class, 'pt-5')]/div[@t-field='company.report_footer']" position="replace">
+            <t t-if="company.crb_footer_mode == 'standard'">
+                <div t-field="company.report_footer"/>
+            </t>
+            <t t-elif="company.crb_footer_mode == 'custom'">
+                <div t-out="company.crb_footer_html"/>
+            </t>
+            <t t-else="">
+                <div/>
+            </t>
+        </xpath>
+    </template>
+
+    <!-- external_layout_bubble -->
+    <template id="crb_external_layout_bubble" inherit_id="web.external_layout_bubble">
+        <xpath expr="//img[hasclass('o_company_logo') and hasclass('mb-2')]" position="replace">
+            <t t-set="logo_class" t-value="'o_company_logo mb-2'"/>
+            <t t-call="company_report_branding.crb_render_logo"/>
+        </xpath>
+        <xpath expr="//div[hasclass('article') and hasclass('o_report_layout_bubble')]/t[@t-out='0']" position="replace">
+            <div class="crb-report-root crb-article-inner" t-att-style="company.crb_get_article_wrapper_style()">
+                <t t-out="0"/>
+            </div>
+        </xpath>
+        <xpath expr="//div[hasclass('o_footer_content') and contains(@t-attf-class, 'pt-4')]/div[@t-field='company.report_footer']" position="replace">
+            <t t-if="company.crb_footer_mode == 'standard'">
+                <div class="border-top pt-2" t-field="company.report_footer"/>
+            </t>
+            <t t-elif="company.crb_footer_mode == 'custom'">
+                <div class="border-top pt-2" t-out="company.crb_footer_html"/>
+            </t>
+            <t t-else="">
+                <div class="border-top pt-2"/>
+            </t>
+        </xpath>
+    </template>
+
+</odoo>

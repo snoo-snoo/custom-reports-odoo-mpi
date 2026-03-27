@@ -1,0 +1,36 @@
+# German translations for company_report_branding
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Language: de\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+
+#. module: company_report_branding
+#: model_terms:ir.ui.view,arch_db:company_report_branding.view_company_form_report_branding
+msgid "Report branding"
+msgstr "Berichte (CI)"
+
+#. module: company_report_branding
+#: model_terms:ir.ui.view,arch_db:company_report_branding.view_company_form_report_branding
+msgid "Letterhead"
+msgstr "Briefpapier"
+
+#. module: company_report_branding
+#: model_terms:ir.ui.view,arch_db:company_report_branding.view_company_form_report_branding
+msgid "Fonts"
+msgstr "Schriften"
+
+#. module: company_report_branding
+#: model_terms:ir.ui.view,arch_db:company_report_branding.view_company_form_report_branding
+msgid "Logo and footer"
+msgstr "Logo und Fußzeile"
+
+#. module: company_report_branding
+#: code:addons/company_report_branding/models/res_company.py:0
+msgid "Custom footer HTML is required when footer mode is “Custom HTML footer”."
+msgstr "Bei „Benutzerdefinierte HTML-Fußzeile“ ist eine Fußzeile erforderlich."
+
+#. module: company_report_branding
+#: code:addons/company_report_branding/models/res_company.py:0
+msgid "A custom logo file is required when report logo mode is “Custom report logo”."
+msgstr "Bei „Benutzerdefiniertes Berichtslogo“ ist eine Logodatei erforderlich."

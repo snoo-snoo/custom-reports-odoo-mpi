@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_company_form_report_branding" model="ir.ui.view">
+        <field name="name">res.company.form.report.branding</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Report branding" name="report_branding" groups="base.group_system">
+                    <group string="Letterhead">
+                        <field name="crb_letterhead_pdf" filename="crb_letterhead_pdf_filename"/>
+                        <field name="crb_letterhead_pdf_filename" invisible="1"/>
+                        <field name="crb_use_letterhead"/>
+                        <field name="crb_margin_top_mm"/>
+                        <field name="crb_margin_bottom_mm"/>
+                        <field name="crb_margin_left_mm"/>
+                        <field name="crb_margin_right_mm"/>
+                        <field name="crb_asset_token" readonly="1" groups="base.group_no_one"/>
+                    </group>
+                    <group string="Fonts">
+                        <group string="Heading">
+                            <field name="crb_font_heading_source"/>
+                            <field name="crb_font_heading_google_family" invisible="crb_font_heading_source != 'google'"/>
+                            <field name="crb_font_heading_file" filename="crb_font_heading_filename" invisible="crb_font_heading_source != 'upload'"/>
+                            <field name="crb_font_heading_filename" invisible="1"/>
+                        </group>
+                        <group string="Body">
+                            <field name="crb_font_body_source"/>
+                            <field name="crb_font_body_google_family" invisible="crb_font_body_source != 'google'"/>
+                            <field name="crb_font_body_file" filename="crb_font_body_filename" invisible="crb_font_body_source != 'upload'"/>
+                            <field name="crb_font_body_filename" invisible="1"/>
+                        </group>
+                    </group>
+                    <group string="Logo and footer">
+                        <group>
+                            <field name="crb_logo_mode"/>
+                            <field name="crb_logo_custom" filename="crb_logo_custom_filename" invisible="crb_logo_mode != 'custom'"/>
+                            <field name="crb_logo_custom_filename" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="crb_footer_mode"/>
+                            <field name="crb_footer_html" invisible="crb_footer_mode != 'custom'"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
