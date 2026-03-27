@@ -26,6 +26,46 @@ msgid "Logo and footer"
 msgstr "Logo und Fußzeile"
 
 #. module: company_report_branding
+#: model_terms:ir.ui.view,arch_db:company_report_branding.view_company_form_report_branding
+msgid "Apply branding on these reports"
+msgstr "CI auf diese Berichte anwenden"
+
+#. module: company_report_branding
+#: model:ir.model.fields,field_description:company_report_branding.field_res_company__crb_rpt_sale_order
+msgid "Sales quotations & orders"
+msgstr "Verkaufsangebote & Aufträge"
+
+#. module: company_report_branding
+#: model:ir.model.fields,field_description:company_report_branding.field_res_company__crb_rpt_stock_picking
+msgid "Deliveries / pickings"
+msgstr "Lieferungen / Entnahmen"
+
+#. module: company_report_branding
+#: model:ir.model.fields,field_description:company_report_branding.field_res_company__crb_rpt_purchase_order
+msgid "Purchase orders"
+msgstr "Einkaufsaufträge"
+
+#. module: company_report_branding
+#: model:ir.model.fields,field_description:company_report_branding.field_res_company__crb_rpt_customer_invoice
+msgid "Customer invoices"
+msgstr "Kundenrechnungen"
+
+#. module: company_report_branding
+#: model:ir.model.fields,field_description:company_report_branding.field_res_company__crb_rpt_credit_note
+msgid "Customer credit notes"
+msgstr "Kundengutschriften"
+
+#. module: company_report_branding
+#: model:ir.model.fields,field_description:company_report_branding.field_res_company__crb_rpt_vendor
+msgid "Vendor bills & refunds"
+msgstr "Lieferantenrechnungen & Erstattungen"
+
+#. module: company_report_branding
+#: model:ir.model.fields,field_description:company_report_branding.field_res_company__crb_rpt_other
+msgid "All other PDF reports"
+msgstr "Alle übrigen PDF-Berichte"
+
+#. module: company_report_branding
 #: code:addons/company_report_branding/models/res_company.py:0
 msgid "Custom footer HTML is required when footer mode is “Custom HTML footer”."
 msgstr "Bei „Benutzerdefinierte HTML-Fußzeile“ ist eine Fußzeile erforderlich."
@@ -34,3 +74,32 @@ msgstr "Bei „Benutzerdefinierte HTML-Fußzeile“ ist eine Fußzeile erforderl
 #: code:addons/company_report_branding/models/res_company.py:0
 msgid "A custom logo file is required when report logo mode is “Custom report logo”."
 msgstr "Bei „Benutzerdefiniertes Berichtslogo“ ist eine Logodatei erforderlich."
+
+#. module: company_report_branding
+#: model_terms:ir.ui.view,arch_db:company_report_branding.view_company_form_report_branding
+msgid "Default texts near line tables (HTML)"
+msgstr "Standardtexte bei Positionstabellen (HTML)"
+
+#. module: company_report_branding
+#: model_terms:ir.ui.view,arch_db:company_report_branding.view_company_form_report_branding
+msgid ""
+"Optional blocks printed on PDFs above / below the main product line table "
+"(separate texts per document type; translatable)."
+msgstr ""
+"Optionale Blöcke im PDF ober- und unterhalb der Haupt-Positionstabelle "
+"(je Dokumenttyp; übersetzbar)."
+
+#. module: company_report_branding
+#: model_terms:ir.ui.view,arch_db:company_report_branding.view_company_form_report_branding
+msgid "Sale orders &amp; quotations"
+msgstr "Verkaufsaufträge & Angebote"
+
+#. module: company_report_branding
+#: model_terms:ir.ui.view,arch_db:company_report_branding.view_company_form_report_branding
+msgid "Delivery slips / pickings"
+msgstr "Lieferscheine / Entnahmen"
+
+#. module: company_report_branding
+#: model_terms:ir.ui.view,arch_db:company_report_branding.view_company_form_report_branding
+msgid "Vendor bills &amp; vendor credit notes"
+msgstr "Eingangsrechnungen & Lieferantengutschriften"

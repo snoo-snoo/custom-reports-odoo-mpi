@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Sale quotations / orders -->
+    <template id="crb_report_saleorder_line_notes" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//table[hasclass('o_has_total_table') and hasclass('o_main_table')]" position="before">
+            <div t-if="doc.company_id.crb_line_note_sale_above" class="crb-report-line-note mb-2" t-field="doc.company_id.crb_line_note_sale_above"/>
+        </xpath>
+        <xpath expr="//table[hasclass('o_has_total_table') and hasclass('o_main_table')]" position="after">
+            <div t-if="doc.company_id.crb_line_note_sale_below" class="crb-report-line-note mt-2 mb-2" t-field="doc.company_id.crb_line_note_sale_below"/>
+        </xpath>
+    </template>
+
+    <!-- Delivery / picking slip -->
+    <template id="crb_report_delivery_line_notes" inherit_id="stock.report_delivery_document">
+        <xpath expr="//table[@name='stock_move_table']" position="before">
+            <div t-if="o.state != 'done' and o.company_id.crb_line_note_delivery_above"
+                 class="crb-report-line-note mb-2"
+                 t-field="o.company_id.crb_line_note_delivery_above"/>
+        </xpath>
+        <xpath expr="//table[@name='stock_move_line_table']" position="before">
+            <div t-if="o.state == 'done' and o.move_line_ids and o.company_id.crb_line_note_delivery_above"
+                 class="crb-report-line-note mb-2"
+                 t-field="o.company_id.crb_line_note_delivery_above"/>
+        </xpath>
+        <xpath expr="//table[@name='stock_move_table']" position="after">
+            <div t-if="o.state != 'done' and o.company_id.crb_line_note_delivery_below"
+                 class="crb-report-line-note mt-2 mb-2"
+                 t-field="o.company_id.crb_line_note_delivery_below"/>
+        </xpath>
+        <xpath expr="//table[@name='stock_move_line_table']" position="after">
+            <div t-if="o.state == 'done' and o.move_line_ids and o.company_id.crb_line_note_delivery_below"
+                 class="crb-report-line-note mt-2 mb-2"
+                 t-field="o.company_id.crb_line_note_delivery_below"/>
+        </xpath>
+    </template>
+
+    <!-- Purchase RFQ / PO -->
+    <template id="crb_report_purchaseorder_line_notes" inherit_id="purchase.report_purchaseorder_document">
+        <xpath expr="//table[hasclass('o_has_total_table') and hasclass('o_main_table')]" position="before">
+            <div t-if="o.company_id.crb_line_note_purchase_above" class="crb-report-line-note mb-2" t-field="o.company_id.crb_line_note_purchase_above"/>
+        </xpath>
+        <xpath expr="//table[hasclass('o_has_total_table') and hasclass('o_main_table')]" position="after">
+            <div t-if="o.company_id.crb_line_note_purchase_below" class="crb-report-line-note mt-2 mb-2" t-field="o.company_id.crb_line_note_purchase_below"/>
+        </xpath>
+    </template>
+
+    <!-- Invoices, credit notes, vendor documents -->
+    <template id="crb_report_invoice_line_notes" inherit_id="account.report_invoice_document">
+        <xpath expr="//table[@name='invoice_line_table']" position="before">
+            <div t-if="o.move_type == 'out_invoice' and o.company_id.crb_line_note_out_invoice_above"
+                 class="crb-report-line-note mb-2"
+                 t-field="o.company_id.crb_line_note_out_invoice_above"/>
+            <div t-if="o.move_type == 'out_refund' and o.company_id.crb_line_note_out_refund_above"
+                 class="crb-report-line-note mb-2"
+                 t-field="o.company_id.crb_line_note_out_refund_above"/>
+            <div t-if="(o.move_type == 'in_invoice' or o.move_type == 'in_refund') and o.company_id.crb_line_note_vendor_above"
+                 class="crb-report-line-note mb-2"
+                 t-field="o.company_id.crb_line_note_vendor_above"/>
+        </xpath>
+        <xpath expr="//table[@name='invoice_line_table']" position="after">
+            <div t-if="o.move_type == 'out_invoice' and o.company_id.crb_line_note_out_invoice_below"
+                 class="crb-report-line-note mt-2 mb-2"
+                 t-field="o.company_id.crb_line_note_out_invoice_below"/>
+            <div t-if="o.move_type == 'out_refund' and o.company_id.crb_line_note_out_refund_below"
+                 class="crb-report-line-note mt-2 mb-2"
+                 t-field="o.company_id.crb_line_note_out_refund_below"/>
+            <div t-if="(o.move_type == 'in_invoice' or o.move_type == 'in_refund') and o.company_id.crb_line_note_vendor_below"
+                 class="crb-report-line-note mt-2 mb-2"
+                 t-field="o.company_id.crb_line_note_vendor_below"/>
+        </xpath>
+    </template>
+
+</odoo>

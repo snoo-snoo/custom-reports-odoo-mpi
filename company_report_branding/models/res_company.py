@@ -126,6 +126,135 @@ class ResCompany(models.Model):
     crb_logo_custom = fields.Binary(string='Custom report logo', attachment=True, groups='base.group_system')
     crb_logo_custom_filename = fields.Char(groups='base.group_system')
 
+    crb_rpt_sale_order = fields.Boolean(
+        string='Sales quotations & orders',
+        default=True,
+        groups='base.group_system',
+        help='Apply letterhead, fonts, logo/footer modes on sale.order PDF reports (requires Sale app).',
+    )
+    crb_rpt_stock_picking = fields.Boolean(
+        string='Deliveries / pickings',
+        default=True,
+        groups='base.group_system',
+        help='Apply on stock.picking / delivery slip PDF reports (requires Inventory).',
+    )
+    crb_rpt_purchase_order = fields.Boolean(
+        string='Purchase orders',
+        default=True,
+        groups='base.group_system',
+        help='Apply on purchase.order PDF reports (requires Purchase).',
+    )
+    crb_rpt_customer_invoice = fields.Boolean(
+        string='Customer invoices',
+        default=True,
+        groups='base.group_system',
+        help='Apply on customer invoices (account.move, type out_invoice).',
+    )
+    crb_rpt_credit_note = fields.Boolean(
+        string='Customer credit notes',
+        default=True,
+        groups='base.group_system',
+        help='Apply on customer credit notes (account.move, type out_refund).',
+    )
+    crb_rpt_vendor = fields.Boolean(
+        string='Vendor bills & refunds',
+        default=True,
+        groups='base.group_system',
+        help='Apply on vendor bills and refunds (account.move, in_invoice / in_refund).',
+    )
+    crb_rpt_other = fields.Boolean(
+        string='All other PDF reports',
+        default=True,
+        groups='base.group_system',
+        help='Apply on any other model using the external report layout (incl. layout preview).',
+    )
+
+    crb_line_note_sale_above = fields.Html(
+        string='Sale order — above lines',
+        translate=True,
+        sanitize_attributes=True,
+        sanitize_form=True,
+        groups='base.group_system',
+    )
+    crb_line_note_sale_below = fields.Html(
+        string='Sale order — below lines',
+        translate=True,
+        sanitize_attributes=True,
+        sanitize_form=True,
+        groups='base.group_system',
+    )
+    crb_line_note_delivery_above = fields.Html(
+        string='Delivery slip — above lines',
+        translate=True,
+        sanitize_attributes=True,
+        sanitize_form=True,
+        groups='base.group_system',
+    )
+    crb_line_note_delivery_below = fields.Html(
+        string='Delivery slip — below lines',
+        translate=True,
+        sanitize_attributes=True,
+        sanitize_form=True,
+        groups='base.group_system',
+    )
+    crb_line_note_purchase_above = fields.Html(
+        string='Purchase order — above lines',
+        translate=True,
+        sanitize_attributes=True,
+        sanitize_form=True,
+        groups='base.group_system',
+    )
+    crb_line_note_purchase_below = fields.Html(
+        string='Purchase order — below lines',
+        translate=True,
+        sanitize_attributes=True,
+        sanitize_form=True,
+        groups='base.group_system',
+    )
+    crb_line_note_out_invoice_above = fields.Html(
+        string='Customer invoice — above lines',
+        translate=True,
+        sanitize_attributes=True,
+        sanitize_form=True,
+        groups='base.group_system',
+    )
+    crb_line_note_out_invoice_below = fields.Html(
+        string='Customer invoice — below lines',
+        translate=True,
+        sanitize_attributes=True,
+        sanitize_form=True,
+        groups='base.group_system',
+    )
+    crb_line_note_out_refund_above = fields.Html(
+        string='Customer credit note — above lines',
+        translate=True,
+        sanitize_attributes=True,
+        sanitize_form=True,
+        groups='base.group_system',
+    )
+    crb_line_note_out_refund_below = fields.Html(
+        string='Customer credit note — below lines',
+        translate=True,
+        sanitize_attributes=True,
+        sanitize_form=True,
+        groups='base.group_system',
+    )
+    crb_line_note_vendor_above = fields.Html(
+        string='Vendor bill / refund — above lines',
+        translate=True,
+        sanitize_attributes=True,
+        sanitize_form=True,
+        groups='base.group_system',
+        help='Shown on vendor bills and vendor credit notes (account.move in_invoice / in_refund).',
+    )
+    crb_line_note_vendor_below = fields.Html(
+        string='Vendor bill / refund — below lines',
+        translate=True,
+        sanitize_attributes=True,
+        sanitize_form=True,
+        groups='base.group_system',
+    )
+
     @api.constrains('crb_footer_mode', 'crb_footer_html')
     def _check_crb_footer_custom(self):
         for company in self:
@@ -303,3 +432,50 @@ class ResCompany(models.Model):
             if 'company_id' in rec._fields and rec.company_id:
                 return rec.company_id.sudo()
         return self.env.company.sudo()
+
+    def _crb_normalize_doc_ids(self, doc_ids):
+        """Normalize doc ids from ir.actions.report to a list of ints."""
+        if doc_ids is None or doc_ids is False:
+            return []
+        if isinstance(doc_ids, int):
+            return [doc_ids]
+        try:
+            return [int(x) for x in doc_ids if x is not False and x is not None]
+        except (TypeError, ValueError):
+            return []
+
+    def _crb_should_apply_branding_for_report(self, report, doc_ids):
+        """Whether this company’s CI should apply to the given report action."""
+        self.ensure_one()
+        if not report or not report.model:
+            return self.crb_rpt_other
+        model_name = report.model
+        if model_name not in self.env:
+            return self.crb_rpt_other
+        if model_name == 'sale.order':
+            return self.crb_rpt_sale_order
+        if model_name == 'stock.picking':
+            return self.crb_rpt_stock_picking
+        if model_name == 'purchase.order':
+            return self.crb_rpt_purchase_order
+        if model_name == 'account.move':
+            ids = self._crb_normalize_doc_ids(doc_ids)
+            if not ids:
+                return (
+                    self.crb_rpt_customer_invoice
+                    or self.crb_rpt_credit_note
+                    or self.crb_rpt_vendor
+                    or self.crb_rpt_other
+                )
+            move = self.env['account.move'].browse(ids[0])
+            if not move.exists():
+                return self.crb_rpt_other
+            mt = move.move_type
+            if mt == 'out_invoice':
+                return self.crb_rpt_customer_invoice
+            if mt == 'out_refund':
+                return self.crb_rpt_credit_note
+            if mt in ('in_invoice', 'in_refund'):
+                return self.crb_rpt_vendor
+            return self.crb_rpt_other
+        return self.crb_rpt_other

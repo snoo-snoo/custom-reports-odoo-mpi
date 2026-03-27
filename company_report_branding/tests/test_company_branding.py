@@ -49,3 +49,29 @@ class TestCompanyReportBranding(TransactionCase):
             {},
         )
         self.assertIn('crb_report_extra_head', data)
+        self.assertIn('crb_apply_branding', data)
+        self.assertTrue(data['crb_apply_branding'])
+
+    def test_should_apply_branding_sale_order_flag(self):
+        company = self.env.company
+        company.crb_rpt_sale_order = False
+        if 'sale.order' not in self.env:
+            self.skipTest('sale app not installed')
+        report = self.env['ir.actions.report'].sudo().search(
+            [('model', '=', 'sale.order')],
+            limit=1,
+        )
+        if not report:
+            self.skipTest('No ir.actions.report on sale.order')
+        self.assertFalse(company._crb_should_apply_branding_for_report(report, []))
+
+    def test_should_apply_branding_other_when_model_unknown(self):
+        company = self.env.company
+        company.crb_rpt_other = False
+        report = self.env['ir.actions.report'].sudo().search(
+            [('model', '=', 'res.users')],
+            limit=1,
+        )
+        if not report:
+            self.skipTest('No report on res.users')
+        self.assertFalse(company._crb_should_apply_branding_for_report(report, []))
