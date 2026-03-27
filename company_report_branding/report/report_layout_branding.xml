@@ -148,7 +148,8 @@
                 <t t-out="0"/>
             </div>
         </xpath>
-        <xpath expr="//div[hasclass('o_footer_content') and contains(@t-attf-class, 'pt-5')]/div[@t-field='company.report_footer']" position="replace">
+        <!-- Wave: o_footer_content is only on t-attf-class; one block per template — match descendant -->
+        <xpath expr="//div[contains(@t-attf-class, 'o_footer_content')]//div[@t-field='company.report_footer']" position="replace">
             <t t-if="company.crb_footer_mode == 'standard'">
                 <div t-field="company.report_footer"/>
             </t>
@@ -172,7 +173,8 @@
                 <t t-out="0"/>
             </div>
         </xpath>
-        <xpath expr="//div[hasclass('o_footer_content') and contains(@t-attf-class, 'pt-4')]/div[@t-field='company.report_footer']" position="replace">
+        <!-- Bubble: same pattern as wave -->
+        <xpath expr="//div[contains(@t-attf-class, 'o_footer_content')]//div[@t-field='company.report_footer']" position="replace">
             <t t-if="company.crb_footer_mode == 'standard'">
                 <div class="border-top pt-2" t-field="company.report_footer"/>
             </t>
