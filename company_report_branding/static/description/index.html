@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Company Report Branding</title>
+    <style type="text/css">
+        .crb-desc { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; color: #212529; line-height: 1.55; max-width: 900px; margin: 0 auto; padding: 0 12px 24px; }
+        .crb-desc h1 { font-size: 1.75rem; margin: 1.25rem 0 0.5rem; color: #0d6efd; }
+        .crb-desc h2 { font-size: 1.35rem; margin: 2rem 0 0.75rem; border-bottom: 1px solid #dee2e6; padding-bottom: 0.35rem; }
+        .crb-desc h3 { font-size: 1.1rem; margin: 1.25rem 0 0.5rem; }
+        .crb-desc p { margin: 0.5rem 0; }
+        .crb-desc ul { margin: 0.5rem 0 0.75rem 1.25rem; }
+        .crb-desc li { margin: 0.25rem 0; }
+        .crb-desc .crb-meta { font-size: 0.9rem; color: #6c757d; margin-bottom: 1rem; }
+        .crb-desc .crb-lang { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 2px solid #e9ecef; }
+        .crb-desc .crb-note { font-size: 0.85rem; color: #6c757d; font-style: italic; margin-top: 1.5rem; }
+    </style>
+</head>
+<body>
+<div class="crb-desc">
+
+    <section class="oe_container">
+        <div class="oe_row oe_spaced">
+            <h1 class="oe_slogan">Company Report Branding</h1>
+            <p class="crb-meta">
+                <strong>Odoo 19.0</strong> · Multicompany CI for PDF reports · Odoo.sh compatible<br/>
+                <strong>Author:</strong> MPI GmbH, Michael Plöckinger ·
+                <a href="https://www.mpi-erp.at" target="_blank" rel="noopener">www.mpi-erp.at</a>
+                · <strong>License:</strong> LGPL-3
+            </p>
+        </div>
+    </section>
+
+    <section class="oe_container">
+        <div class="oe_row oe_spaced">
+            <h2 class="oe_slogan">English</h2>
+            <h3>Summary</h3>
+            <p>
+                Per-company branding for PDF reports: upload an A4 letterhead PDF, configure heading and body fonts
+                (Google Fonts or file upload), design a custom HTML footer, and choose whether Odoo’s standard logo and
+                footer text appear—or stay hidden when your letterhead already includes them. Settings are on the
+                company form (multicompany-safe).
+            </p>
+            <h3>Key features</h3>
+            <ul>
+                <li>Letterhead PDF with optional background and content margins (mm)</li>
+                <li>Two font channels (heading + body): theme default, Google Font, or upload</li>
+                <li>Footer modes: standard Odoo, custom translatable HTML, or no footer text</li>
+                <li>Logo modes: standard company logo, hidden, or custom report logo</li>
+                <li>Supports main Odoo 19 external layouts (Light, Striped, Boxed, Bold, Folder, Wave, Bubble)</li>
+                <li>Odoo.sh: add <strong>PyMuPDF</strong> via repository root <code>requirements.txt</code> for letterhead rasterization</li>
+            </ul>
+            <h3>Configuration</h3>
+            <p>
+                <strong>Settings → Companies →</strong> your company → tab <strong>Report branding</strong>
+                (administrators / Settings access required).
+            </p>
+            <h3>Technical notes</h3>
+            <p>
+                Depends on <code>web</code> only. Google Fonts need outbound HTTPS from the PDF worker unless you use
+                uploaded fonts only. Letterhead uses a raster background (first PDF page); vector PDF merge is not included.
+            </p>
+        </div>
+    </section>
+
+    <section class="oe_container crb-lang">
+        <div class="oe_row oe_spaced">
+            <h2 class="oe_slogan">Deutsch</h2>
+            <h3>Kurzbeschreibung</h3>
+            <p>
+                <strong>Corporate Design</strong> für PDF-Berichte pro Unternehmen: Briefpapier-PDF hochladen,
+                Überschrift- und Fließtext-Schrift wählen (Google Fonts oder Upload), Fußzeile als HTML gestalten und
+                festlegen, ob Odoo-Logo und Standard-Fußzeile angezeigt werden – oder ausgeblendet, wenn das Briefpapier
+                das schon enthält. Alle Einstellungen pro Firma (mehrmandantenfähig).
+            </p>
+            <h3>Funktionen</h3>
+            <ul>
+                <li>Briefpapier-PDF mit optionalem Hintergrund und Inhaltsrändern (mm)</li>
+                <li>Zwei Schrift-Kanäle (Überschrift + Text): Theme, Google Font oder Datei-Upload</li>
+                <li>Fußzeilen-Modi: Odoo-Standard, benutzerdefiniertes HTML, kein Fußzeilentext</li>
+                <li>Logo-Modi: Standard-Firmenlogo, ausgeblendet, eigenes Berichts-Logo</li>
+                <li>Unterstützt die gängigen Odoo-19-externen Layout-Varianten</li>
+                <li>Odoo.sh: <strong>PyMuPDF</strong> über Root-<code>requirements.txt</code> für Briefpapier-Hintergrund</li>
+            </ul>
+            <h3>Konfiguration</h3>
+            <p>
+                <strong>Einstellungen → Unternehmen →</strong> gewünschte Firma → Reiter <strong>Report branding</strong>
+                (Zugriff auf Einstellungen / Administration erforderlich).
+            </p>
+            <h3>Technische Hinweise</h3>
+            <p>
+                Abhängigkeit nur von <code>web</code>. Google Fonts benötigen ausgehendes HTTPS zum PDF-Worker, sofern keine
+                reinen Upload-Schriften genutzt werden. Briefpapier v1: Raster-Hintergrund (erste PDF-Seite).
+            </p>
+        </div>
+    </section>
+
+    <p class="crb-note">
+        Parts of this module were developed with assistance from AI tools; MPI GmbH remains responsible for review,
+        testing, and compliance. /
+        Teile dieses Moduls wurden mit Unterstützung von KI-Werkzeugen erstellt; die Verantwortung für Prüfung, Test
+        und Compliance liegt bei der MPI GmbH.
+    </p>
+
+</div>
+</body>
+</html>
