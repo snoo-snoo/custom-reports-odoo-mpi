@@ -22,7 +22,8 @@
             <t t-set="logo_class" t-value="'o_company_logo_small'"/>
             <t t-call="company_report_branding.crb_render_logo"/>
         </xpath>
-        <xpath expr="//div[hasclass('article') and hasclass('o_report_layout_standard')]/t[@t-out='0']" position="replace">
+        <!-- Last direct <t> under article is the report body slot (t-out="0"); avoid @t-out which may not match compiled arch -->
+        <xpath expr="//div[contains(@t-attf-class, 'o_report_layout_standard')]/t[last()]" position="replace">
             <div class="crb-report-root crb-article-inner" t-att-style="company.crb_get_article_wrapper_style()">
                 <t t-out="0"/>
             </div>
@@ -46,7 +47,7 @@
             <t t-set="logo_class" t-value="'o_company_logo_big'"/>
             <t t-call="company_report_branding.crb_render_logo"/>
         </xpath>
-        <xpath expr="//div[hasclass('article') and hasclass('o_report_layout_striped')]/t[@t-out='0']" position="replace">
+        <xpath expr="//div[contains(@t-attf-class, 'o_report_layout_striped')]/t[last()]" position="replace">
             <div class="crb-report-root crb-article-inner" t-att-style="company.crb_get_article_wrapper_style()">
                 <t t-out="0"/>
             </div>
@@ -70,12 +71,12 @@
             <t t-set="logo_class" t-value="'o_company_logo_big'"/>
             <t t-call="company_report_branding.crb_render_logo"/>
         </xpath>
-        <xpath expr="//div[hasclass('article') and hasclass('o_report_layout_boxed')]/t[@t-out='0']" position="replace">
+        <xpath expr="//div[contains(@t-attf-class, 'o_report_layout_boxed')]/t[last()]" position="replace">
             <div class="crb-report-root crb-article-inner" t-att-style="company.crb_get_article_wrapper_style()">
                 <t t-out="0"/>
             </div>
         </xpath>
-        <xpath expr="//div[hasclass('o_footer_content') and contains(@t-attf-class, 'border-top')]/span[@t-field='company.report_footer']" position="replace">
+        <xpath expr="//div[hasclass('o_footer_content')][contains(@t-attf-class, 'border-top')]//span[@t-field='company.report_footer']" position="replace">
             <t t-if="company.crb_footer_mode == 'standard'">
                 <span t-field="company.report_footer"/>
             </t>
@@ -94,12 +95,12 @@
             <t t-set="logo_class" t-value="'o_company_logo_big'"/>
             <t t-call="company_report_branding.crb_render_logo"/>
         </xpath>
-        <xpath expr="//div[hasclass('article') and hasclass('o_report_layout_bold')]/t[@t-out='0']" position="replace">
+        <xpath expr="//div[contains(@t-attf-class, 'o_report_layout_bold')]/t[last()]" position="replace">
             <div class="crb-report-root crb-article-inner" t-att-style="company.crb_get_article_wrapper_style()">
                 <t t-out="0"/>
             </div>
         </xpath>
-        <xpath expr="//div[hasclass('o_footer_content') and contains(@t-attf-class, 'border-top')]/span[@t-field='company.report_footer']" position="replace">
+        <xpath expr="//div[hasclass('o_footer_content')][contains(@t-attf-class, 'border-top')]//span[@t-field='company.report_footer']" position="replace">
             <t t-if="company.crb_footer_mode == 'standard'">
                 <span t-field="company.report_footer"/>
             </t>
@@ -118,7 +119,7 @@
             <t t-set="logo_class" t-value="'o_company_logo_big mb-2'"/>
             <t t-call="company_report_branding.crb_render_logo"/>
         </xpath>
-        <xpath expr="//div[hasclass('article') and hasclass('o_report_layout_folder')]/t[@t-out='0']" position="replace">
+        <xpath expr="//div[contains(@t-attf-class, 'o_report_layout_folder')]/t[last()]" position="replace">
             <div class="crb-report-root crb-article-inner" t-att-style="company.crb_get_article_wrapper_style()">
                 <t t-out="0"/>
             </div>
@@ -142,7 +143,7 @@
             <t t-set="logo_class" t-value="'o_company_logo mb-2'"/>
             <t t-call="company_report_branding.crb_render_logo"/>
         </xpath>
-        <xpath expr="//div[hasclass('article') and hasclass('o_report_layout_wave')]/t[@t-out='0']" position="replace">
+        <xpath expr="//div[contains(@t-attf-class, 'o_report_layout_wave')]/t[last()]" position="replace">
             <div class="crb-report-root crb-article-inner" t-att-style="company.crb_get_article_wrapper_style()">
                 <t t-out="0"/>
             </div>
@@ -166,7 +167,7 @@
             <t t-set="logo_class" t-value="'o_company_logo mb-2'"/>
             <t t-call="company_report_branding.crb_render_logo"/>
         </xpath>
-        <xpath expr="//div[hasclass('article') and hasclass('o_report_layout_bubble')]/t[@t-out='0']" position="replace">
+        <xpath expr="//div[contains(@t-attf-class, 'o_report_layout_bubble')]/t[last()]" position="replace">
             <div class="crb-report-root crb-article-inner" t-att-style="company.crb_get_article_wrapper_style()">
                 <t t-out="0"/>
             </div>

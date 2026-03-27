@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Company Report Branding',
-    'version': '19.0.1.0.0',
+    'version': '19.0.1.0.1',
     'category': 'Reporting',
     'summary': 'Per-company letterhead, fonts, and footer/logo modes for PDF reports',
     'description': """
