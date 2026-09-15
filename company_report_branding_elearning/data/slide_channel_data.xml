@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="channel_crb_training" model="slide.channel">
+        <field name="name">Company Report Branding – Anwendertraining</field>
+        <field name="channel_type">training</field>
+        <field name="visibility">connected</field>
+        <field name="enroll">public</field>
+        <field name="is_published" eval="True"/>
+        <field name="allow_comment" eval="False"/>
+        <field name="image_1920" type="base64" file="company_report_branding_elearning/static/description/icon.png"/>
+        <field name="description" type="html">
+            <div>
+                <p>Lernen Sie in etwa 40 Minuten, wie Sie Angebote, Lieferscheine und Rechnungen
+                im Erscheinungsbild Ihrer Firma gestalten – ohne Programmierkenntnisse.</p>
+                <p>Enthalten: Schritt-für-Schritt-Artikel, PDF-Handbuch, drei stumme Demo-Videos
+                zum Herunterladen und ein Abschlusstest.</p>
+            </div>
+        </field>
+    </record>
+
+
+    <record id="slide_sec_a" model="slide.slide">
+        <field name="name">A. Überblick</field>
+        <field name="channel_id" ref="channel_crb_training"/>
+        <field name="is_category" eval="True"/>
+        <field name="is_published" eval="True"/>
+        <field name="sequence">1</field>
+    </record>
+
+
+    <record id="slide_art_01" model="slide.slide">
+        <field name="name">Was macht das Modul?</field>
+        <field name="channel_id" ref="channel_crb_training"/>
+        <field name="slide_category">article</field>
+        <field name="is_published" eval="True"/>
+        <field name="is_preview" eval="True"/>
+        <field name="sequence">2</field>
+        <field name="html_content" type="html">
+            <div class="oe_structure"><section class="pt16 pb16">
+    <h1>Was macht Company Report Branding?</h1>
+    <p>
+      Odoo erstellt automatisch PDF-Dateien: Angebote, Lieferscheine, Bestellungen,
+      Rechnungen und Gutschriften. Dieses Modul sorgt dafür, dass diese PDFs
+      <strong>wie Ihre Firma aussehen</strong> – mit Briefpapier, Hausschrift, Logo und Fußzeile.
+    </p>
+    <p>Sie stellen das <strong>einmal pro Unternehmen</strong> ein. Danach gilt es für alle, die ein PDF drucken oder per E-Mail senden.</p>
+    <h2>Was Sie steuern können</h2>
+    <ul>
+      <li>Briefpapier (DIN-A4-Hintergrund)</li>
+      <li>Seitenränder, damit Text nicht in die Grafik läuft</li>
+      <li>Schrift für Überschriften und für den normalen Text</li>
+      <li>Logo zeigen, verstecken oder ein extra Berichtslogo nutzen</li>
+      <li>Fußzeile: Standard, eigener Text, oder leer</li>
+      <li>Fertige Hinweistexte über/unter der Positionstabelle</li>
+      <li>Häkchen, welche Belegarten das Design bekommen</li>
+    </ul>
+    <p><strong>Sie müssen nicht programmieren.</strong> Alles passiert auf einer Karteikarte der Firma.</p>
+    <h2>Wo finde ich das?</h2>
+    <ol>
+      <li>App <em>Einstellungen</em> öffnen</li>
+      <li>Bereich Unternehmen → <em>Info aktualisieren</em> oder <em>Unternehmen verwalten</em></li>
+      <li>Ihre Firma öffnen</li>
+      <li>Reiter <em>Berichte (CI)</em></li>
+    </ol>
+    <p>Nur Administratorinnen und Administratoren sehen diesen Reiter. Alle anderen merken nur, dass die PDFs schöner aussehen.</p>
+  </section></div>
+        </field>
+    </record>
+
+
+    <record id="slide_pdf_handbuch" model="slide.slide">
+        <field name="name">Benutzerhandbuch (PDF zum Download)</field>
+        <field name="channel_id" ref="channel_crb_training"/>
+        <field name="slide_category">document</field>
+        <field name="source_type">local_file</field>
+        <field name="is_published" eval="True"/>
+        <field name="slide_resource_downloadable" eval="True"/>
+        <field name="sequence">3</field>
+        <field name="binary_content" type="base64" file="company_report_branding_elearning/static/src/pdf/Company_Report_Branding_Benutzerhandbuch.pdf"/>
+    </record>
+
+
+    <record id="slide_sec_b" model="slide.slide">
+        <field name="name">B. Einstellungen im Reiter Berichte (CI)</field>
+        <field name="channel_id" ref="channel_crb_training"/>
+        <field name="is_category" eval="True"/>
+        <field name="is_published" eval="True"/>
+        <field name="sequence">4</field>
+    </record>
+
+
+    <record id="slide_art_02" model="slide.slide">
+        <field name="name">Welche Dokumente bekommen das Design?</field>
+        <field name="channel_id" ref="channel_crb_training"/>
+        <field name="slide_category">article</field>
+        <field name="is_published" eval="True"/>
+        <field name="sequence">5</field>
+        <field name="html_content" type="html">
+            <div class="oe_structure"><section class="pt16 pb16">
+    <h1>Welche Dokumente bekommen das Design?</h1>
+    <p>
+      Ganz oben auf dem Reiter Berichte (CI) stehen Häkchen.
+      Jedes Häkchen bedeutet: „Für diese Belege unser Corporate Design verwenden.“
+    </p>
+    <ul>
+      <li><strong>Sales quotations &amp; orders</strong> – Angebote und Kundenaufträge</li>
+      <li><strong>Deliveries / pickings</strong> – Lieferscheine</li>
+      <li><strong>Purchase orders</strong> – Bestellungen an Lieferanten</li>
+      <li><strong>Customer invoices</strong> – Kundenrechnungen</li>
+      <li><strong>Customer credit notes</strong> – Kundengutschriften</li>
+      <li><strong>Vendor bills &amp; refunds</strong> – Eingangsrechnungen</li>
+      <li><strong>All other PDF reports</strong> – alle übrigen PDFs mit Standardlayout</li>
+    </ul>
+    <p>
+      Standardmäßig ist alles angehakt. Brauchen Einkaufsbestellungen kein Briefpapier,
+      entfernen Sie nur dieses eine Häkchen und klicken auf <strong>Save</strong>.
+    </p>
+  </section></div>
+        </field>
+    </record>
+
+
+    <record id="slide_art_03" model="slide.slide">
+        <field name="name">Briefpapier und Ränder</field>
+        <field name="channel_id" ref="channel_crb_training"/>
+        <field name="slide_category">article</field>
+        <field name="is_published" eval="True"/>
+        <field name="sequence">6</field>
+        <field name="html_content" type="html">
+            <div class="oe_structure"><section class="pt16 pb16">
+    <h1>Briefpapier und Ränder</h1>
+    <p>Ihr Briefpapier ist eine ganz normale <strong>PDF im Format DIN A4</strong> – so wie vom Grafiker geliefert. Odoo nimmt die <strong>erste Seite</strong> und legt sie als Hintergrund hinter den Berichtstext.</p>
+    <ol>
+      <li>Bei <em>Letterhead PDF</em> auf <strong>Upload your file</strong> klicken und die PDF wählen.</li>
+      <li>Häkchen setzen bei <em>Use letterhead on reports</em>. Ohne Häkchen wird die Datei nicht gedruckt.</li>
+      <li>Die vier Ränder in Millimetern so einstellen, dass nichts ins Logo läuft.</li>
+    </ol>
+    <p>Gute Startwerte: oben 35 mm, unten 25 mm, links und rechts je 20 mm. Ist der Kopf sehr hoch, oben auf 45–50 mm gehen und ein Testdokument drucken.</p>
+    <p><strong>Tipp:</strong> Steht das Logo schon auf dem Briefpapier, wählen Sie später beim Logo den Modus <em>Hide logo</em> – sonst erscheint es doppelt.</p>
+  </section></div>
+        </field>
+    </record>
+
+
+    <record id="slide_art_04" model="slide.slide">
+        <field name="name">Schriften</field>
+        <field name="channel_id" ref="channel_crb_training"/>
+        <field name="slide_category">article</field>
+        <field name="is_published" eval="True"/>
+        <field name="sequence">7</field>
+        <field name="html_content" type="html">
+            <div class="oe_structure"><section class="pt16 pb16">
+    <h1>Schriften</h1>
+    <p>Es gibt zwei getrennte Einstellungen: <strong>Heading</strong> (Überschriften wie „Invoice“) und <strong>Body</strong> (restlicher Text).</p>
+    <p>Drei Quellen stehen jeweils zur Wahl:</p>
+    <ol>
+      <li><strong>Odoo layout / theme</strong> – nichts Extra, Schrift wie im Dokumentlayout.</li>
+      <li><strong>Google Font</strong> – Namen eintragen, z. B. Roboto oder Open Sans (genau so wie auf fonts.google.com). Der Server braucht Internetzugang.</li>
+      <li><strong>Uploaded font file</strong> – TTF, OTF, WOFF oder WOFF2 hochladen. Lizenz zur Einbettung in Kunden-PDFs vorher klären.</li>
+    </ol>
+    <p>Ohne Namen bei Google Font oder ohne Datei beim Upload ändert sich optisch nichts. Danach immer <strong>Save</strong> und ein PDF zur Probe öffnen.</p>
+  </section></div>
+        </field>
+    </record>
+
+
+    <record id="slide_art_05" model="slide.slide">
+        <field name="name">Logo und Fußzeile</field>
+        <field name="channel_id" ref="channel_crb_training"/>
+        <field name="slide_category">article</field>
+        <field name="is_published" eval="True"/>
+        <field name="sequence">8</field>
+        <field name="html_content" type="html">
+            <div class="oe_structure"><section class="pt16 pb16">
+    <h1>Logo und Fußzeile</h1>
+    <h2>Logo</h2>
+    <ul>
+      <li><strong>Company logo (standard)</strong> – das Logo von der Firmenkarte</li>
+      <li><strong>Hide logo</strong> – kein Logo im Kopf (weil es schon auf dem Briefpapier ist)</li>
+      <li><strong>Custom report logo</strong> – eigenes Bild nur für PDFs; Datei ist Pflicht</li>
+    </ul>
+    <h2>Fußzeile</h2>
+    <ul>
+      <li><strong>Standard Odoo footer</strong> – Text aus dem Dokumentlayout (Telefon, Bank, UID)</li>
+      <li><strong>Custom HTML footer</strong> – eigener formatierter Text; leer speichern geht nicht</li>
+      <li><strong>No footer text</strong> – kein Textblock unten (Briefpapier enthält die Adresse bereits)</li>
+    </ul>
+    <p>Manche Layouts zeichnen trotzdem eine dünne Linie. „Kein Fußzeilentext“ entfernt den Text, nicht unbedingt jede Linie des Themes.</p>
+  </section></div>
+        </field>
+    </record>
+
+
+    <record id="slide_art_06" model="slide.slide">
+        <field name="name">Texte über und unter den Positionen</field>
+        <field name="channel_id" ref="channel_crb_training"/>
+        <field name="slide_category">article</field>
+        <field name="is_published" eval="True"/>
+        <field name="sequence">9</field>
+        <field name="html_content" type="html">
+            <div class="oe_structure"><section class="pt16 pb16">
+    <h1>Texte über und unter den Positionen</h1>
+    <p>
+      Unten auf dem Reiter finden Sie Felder wie <em>Sale order — above lines</em>
+      und <em>below lines</em>. Das sind <strong>feste Hinweise für alle Belege dieser Art</strong>,
+      nicht die Notiz eines einzelnen Angebots.
+    </p>
+    <p>Jede Belegart (Angebot, Lieferschein, Bestellung, Rechnung, Gutschrift, Eingangsrechnung) hat ein Feld darüber und eines darunter.</p>
+    <p>Beispiele:</p>
+    <ul>
+      <li>Über den Angebotspositionen: „Preise in EUR, netto, zzgl. USt.“</li>
+      <li>Unter dem Angebot: „Gültig 14 Tage. Montage nicht enthalten.“</li>
+      <li>Unter der Rechnung: „Zahlbar in 14 Tagen ohne Abzug.“</li>
+      <li>Unter dem Lieferschein: „Bitte Lieferung unverzüglich prüfen.“</li>
+    </ul>
+    <p>Kurze Absätze, gerne fett. Keine ganzen Webseiten. Die Texte sind übersetzbar, falls Sie mehrsprachig arbeiten.</p>
+  </section></div>
+        </field>
+    </record>
+
+
+    <record id="slide_sec_c" model="slide.slide">
+        <field name="name">C. Prüfen, Alltag und Test</field>
+        <field name="channel_id" ref="channel_crb_training"/>
+        <field name="is_category" eval="True"/>
+        <field name="is_published" eval="True"/>
+        <field name="sequence">10</field>
+    </record>
+
+
+    <record id="slide_art_07" model="slide.slide">
+        <field name="name">PDF prüfen</field>
+        <field name="channel_id" ref="channel_crb_training"/>
+        <field name="slide_category">article</field>
+        <field name="is_published" eval="True"/>
+        <field name="sequence">11</field>
+        <field name="html_content" type="html">
+            <div class="oe_structure"><section class="pt16 pb16">
+    <h1>PDF prüfen</h1>
+    <p>Nach dem Speichern immer mit einem echten Beleg kontrollieren.</p>
+    <ol>
+      <li>Sales → Quotations (oder Buchhaltung → Rechnungen) öffnen.</li>
+      <li>Einen Beleg wählen und drucken / Vorschau.</li>
+      <li>Prüfen: Ränder, Logo nur einmal, Fußzeile, Schriften, Hinweistexte, auch Seite 2.</li>
+    </ol>
+    <p>
+      Die klassische Seite mit Adresse, Positionstabelle und Summe ist die Seite,
+      die Company Report Branding gestaltet. Bunte Mehrseiten-Kataloge aus dem
+      „PDF Quote Builder“ sind eine andere Odoo-Funktion.
+    </p>
+    <p>Sieht alles noch alt aus? Beleg neu öffnen und erneut drucken. Prüfen Sie auch, ob das Häkchen für genau diese Belegart gesetzt ist.</p>
+  </section></div>
+        </field>
+    </record>
+
+
+    <record id="slide_art_08" model="slide.slide">
+        <field name="name">Alltagstipps und Checkliste</field>
+        <field name="channel_id" ref="channel_crb_training"/>
+        <field name="slide_category">article</field>
+        <field name="is_published" eval="True"/>
+        <field name="sequence">12</field>
+        <field name="html_content" type="html">
+            <div class="oe_structure"><section class="pt16 pb16">
+    <h1>Alltagstipps und Checkliste</h1>
+    <h2>Drei bewährte Setups</h2>
+    <p><strong>Nur Briefpapier:</strong> PDF hochladen, Use letterhead an, Logo verstecken, Fußzeile leer, Ränder testen.</p>
+    <p><strong>Nur Hausschrift:</strong> Briefpapier aus, Heading/Body auf Google Font oder Upload, Logo und Fußzeile Standard.</p>
+    <p><strong>Nur Kundenbelege:</strong> Häkchen bei Einkauf und „alle übrigen“ entfernen.</p>
+    <h2>Checkliste vor dem Go-Live</h2>
+    <ul>
+      <li>Dokumentlayout in den Einstellungen gewählt</li>
+      <li>Briefpapier und Ränder an Testdokument geprüft</li>
+      <li>Kein doppeltes Logo, passende Fußzeile</li>
+      <li>Häkchen je Belegart bewusst gesetzt</li>
+      <li>Angebot, Lieferschein und Rechnung – Seite 1 und 2 – gegengelesen</li>
+      <li>Save geklickt</li>
+    </ul>
+    <p>Support: <a href="https://www.mpi-erp.at">www.mpi-erp.at</a></p>
+  </section></div>
+        </field>
+    </record>
+
+
+    <record id="slide_quiz" model="slide.slide">
+        <field name="name">Abschlusstest</field>
+        <field name="channel_id" ref="channel_crb_training"/>
+        <field name="slide_category">quiz</field>
+        <field name="is_published" eval="True"/>
+        <field name="sequence">13</field>
+    </record>
+
+
+    <record id="quiz_q1" model="slide.question">
+        <field name="slide_id" ref="slide_quiz"/>
+        <field name="question">Wo stellen Sie das Corporate Design der PDFs ein?</field>
+    </record>
+
+
+    <record id="quiz_q1_a1" model="slide.answer">
+        <field name="question_id" ref="quiz_q1"/>
+        <field name="text_value">In jedem einzelnen Angebot unter Optionen</field>
+        <field name="is_correct" eval="False"/>
+        <field name="sequence">1</field>
+    </record>
+
+
+    <record id="quiz_q1_a2" model="slide.answer">
+        <field name="question_id" ref="quiz_q1"/>
+        <field name="text_value">Einstellungen → Unternehmen → Ihre Firma → Reiter Berichte (CI)</field>
+        <field name="is_correct" eval="True"/>
+        <field name="sequence">2</field>
+    </record>
+
+
+    <record id="quiz_q1_a3" model="slide.answer">
+        <field name="question_id" ref="quiz_q1"/>
+        <field name="text_value">Im Chatter der Rechnung</field>
+        <field name="is_correct" eval="False"/>
+        <field name="sequence">3</field>
+    </record>
+
+
+    <record id="quiz_q1_a4" model="slide.answer">
+        <field name="question_id" ref="quiz_q1"/>
+        <field name="text_value">Unter Apps → Aktualisieren</field>
+        <field name="is_correct" eval="False"/>
+        <field name="sequence">4</field>
+    </record>
+
+
+    <record id="quiz_q2" model="slide.question">
+        <field name="slide_id" ref="slide_quiz"/>
+        <field name="question">Wer darf den Reiter Berichte (CI) sehen?</field>
+    </record>
+
+
+    <record id="quiz_q2_a1" model="slide.answer">
+        <field name="question_id" ref="quiz_q2"/>
+        <field name="text_value">Benutzer mit Administrations- bzw. Einstellungsrechten</field>
+        <field name="is_correct" eval="True"/>
+        <field name="sequence">1</field>
+    </record>
+
+
+    <record id="quiz_q2_a2" model="slide.answer">
+        <field name="question_id" ref="quiz_q2"/>
+        <field name="text_value">Jeder Verkäufer</field>
+        <field name="is_correct" eval="False"/>
+        <field name="sequence">2</field>
+    </record>
+
+
+    <record id="quiz_q2_a3" model="slide.answer">
+        <field name="question_id" ref="quiz_q2"/>
+        <field name="text_value">Nur der Grafiker außerhalb von Odoo</field>
+        <field name="is_correct" eval="False"/>
+        <field name="sequence">3</field>
+    </record>
+
+
+    <record id="quiz_q2_a4" model="slide.answer">
+        <field name="question_id" ref="quiz_q2"/>
+        <field name="text_value">Kunden im Portal</field>
+        <field name="is_correct" eval="False"/>
+        <field name="sequence">4</field>
+    </record>
+
+
+    <record id="quiz_q3" model="slide.question">
+        <field name="slide_id" ref="slide_quiz"/>
+        <field name="question">Was passiert, wenn ein Briefpapier-PDF hochgeladen ist, „Use letterhead on reports“ aber nicht aktiv ist?</field>
+    </record>
+
+
+    <record id="quiz_q3_a1" model="slide.answer">
+        <field name="question_id" ref="quiz_q3"/>
+        <field name="text_value">Das Briefpapier erscheint trotzdem</field>
+        <field name="is_correct" eval="False"/>
+        <field name="sequence">1</field>
+    </record>
+
+
+    <record id="quiz_q3_a2" model="slide.answer">
+        <field name="question_id" ref="quiz_q3"/>
+        <field name="text_value">Die Datei ist gespeichert, erscheint aber nicht auf den PDFs</field>
+        <field name="is_correct" eval="True"/>
+        <field name="sequence">2</field>
+    </record>
+
+
+    <record id="quiz_q3_a3" model="slide.answer">
+        <field name="question_id" ref="quiz_q3"/>
+        <field name="text_value">Odoo löscht die Datei</field>
+        <field name="is_correct" eval="False"/>
+        <field name="sequence">3</field>
+    </record>
+
+
+    <record id="quiz_q3_a4" model="slide.answer">
+        <field name="question_id" ref="quiz_q3"/>
+        <field name="text_value">Alle Berichte werden leer</field>
+        <field name="is_correct" eval="False"/>
+        <field name="sequence">4</field>
+    </record>
+
+
+    <record id="quiz_q4" model="slide.question">
+        <field name="slide_id" ref="slide_quiz"/>
+        <field name="question">Ihr Logo ist bereits auf dem Briefpapier. Welchen Logo-Modus wählen Sie?</field>
+    </record>
+
+
+    <record id="quiz_q4_a1" model="slide.answer">
+        <field name="question_id" ref="quiz_q4"/>
+        <field name="text_value">Company logo (standard)</field>
+        <field name="is_correct" eval="False"/>
+        <field name="sequence">1</field>
+    </record>
+
+
+    <record id="quiz_q4_a2" model="slide.answer">
+        <field name="question_id" ref="quiz_q4"/>
+        <field name="text_value">Hide logo</field>
+        <field name="is_correct" eval="True"/>
+        <field name="sequence">2</field>
+    </record>
+
+
+    <record id="quiz_q4_a3" model="slide.answer">
+        <field name="question_id" ref="quiz_q4"/>
+        <field name="text_value">Custom report logo ohne Datei</field>
+        <field name="is_correct" eval="False"/>
+        <field name="sequence">3</field>
+    </record>
+
+
+    <record id="quiz_q4_a4" model="slide.answer">
+        <field name="question_id" ref="quiz_q4"/>
+        <field name="text_value">Nichts einstellen, Odoo erkennt das selbst</field>
+        <field name="is_correct" eval="False"/>
+        <field name="sequence">4</field>
+    </record>
+
+
+    <record id="quiz_q5" model="slide.question">
+        <field name="slide_id" ref="slide_quiz"/>
+        <field name="question">Sie wählen „Custom HTML footer“ und lassen das Textfeld leer. Was passiert?</field>
+    </record>
+
+
+    <record id="quiz_q5_a1" model="slide.answer">
+        <field name="question_id" ref="quiz_q5"/>
+        <field name="text_value">Es wird die Standardfußzeile genommen</field>
+        <field name="is_correct" eval="False"/>
+        <field name="sequence">1</field>
+    </record>
+
+
+    <record id="quiz_q5_a2" model="slide.answer">
+        <field name="question_id" ref="quiz_q5"/>
+        <field name="text_value">Odoo verhindert das Speichern und verlangt eine Fußzeile</field>
+        <field name="is_correct" eval="True"/>
+        <field name="sequence">2</field>
+    </record>
+
+
+    <record id="quiz_q5_a3" model="slide.answer">
+        <field name="question_id" ref="quiz_q5"/>
+        <field name="text_value">Die PDFs haben automatisch das Firmenlogo als Fußzeile</field>
+        <field name="is_correct" eval="False"/>
+        <field name="sequence">3</field>
+    </record>
+
+
+    <record id="quiz_q5_a4" model="slide.answer">
+        <field name="question_id" ref="quiz_q5"/>
+        <field name="text_value">Es ändert sich nichts</field>
+        <field name="is_correct" eval="False"/>
+        <field name="sequence">4</field>
+    </record>
+
+
+    <record id="quiz_q6" model="slide.question">
+        <field name="slide_id" ref="slide_quiz"/>
+        <field name="question">Wofür sind die Felder „above lines“ / „below lines“?</field>
+    </record>
+
+
+    <record id="quiz_q6_a1" model="slide.answer">
+        <field name="question_id" ref="quiz_q6"/>
+        <field name="text_value">Sie ersetzen die Positionstabelle</field>
+        <field name="is_correct" eval="False"/>
+        <field name="sequence">1</field>
+    </record>
+
+
+    <record id="quiz_q6_a2" model="slide.answer">
+        <field name="question_id" ref="quiz_q6"/>
+        <field name="text_value">Feste Hinweistexte über bzw. unter der Positionstabelle, je Belegart</field>
+        <field name="is_correct" eval="True"/>
+        <field name="sequence">2</field>
+    </record>
+
+
+    <record id="quiz_q6_a3" model="slide.answer">
+        <field name="question_id" ref="quiz_q6"/>
+        <field name="text_value">Sie ändern die MwSt.</field>
+        <field name="is_correct" eval="False"/>
+        <field name="sequence">3</field>
+    </record>
+
+
+    <record id="quiz_q6_a4" model="slide.answer">
+        <field name="question_id" ref="quiz_q6"/>
+        <field name="text_value">Sie sind nur für den internen Chatter</field>
+        <field name="is_correct" eval="False"/>
+        <field name="sequence">4</field>
+    </record>
+
+
+    <record id="quiz_q7" model="slide.question">
+        <field name="slide_id" ref="slide_quiz"/>
+        <field name="question">Die Google-Schrift erscheint nicht im PDF. Was prüfen Sie zuerst?</field>
+    </record>
+
+
+    <record id="quiz_q7_a1" model="slide.answer">
+        <field name="question_id" ref="quiz_q7"/>
+        <field name="text_value">Ob der Kunde online ist</field>
+        <field name="is_correct" eval="False"/>
+        <field name="sequence">1</field>
+    </record>
+
+
+    <record id="quiz_q7_a2" model="slide.answer">
+        <field name="question_id" ref="quiz_q7"/>
+        <field name="text_value">Ob der Schriftname genau stimmt und der Server das Internet erreichen kann – sonst Schriftdatei hochladen</field>
+        <field name="is_correct" eval="True"/>
+        <field name="sequence">2</field>
+    </record>
+
+
+    <record id="quiz_q7_a3" model="slide.answer">
+        <field name="question_id" ref="quiz_q7"/>
+        <field name="text_value">Ob der Drucker eingeschaltet ist</field>
+        <field name="is_correct" eval="False"/>
+        <field name="sequence">3</field>
+    </record>
+
+
+    <record id="quiz_q7_a4" model="slide.answer">
+        <field name="question_id" ref="quiz_q7"/>
+        <field name="text_value">Ob Studio installiert ist</field>
+        <field name="is_correct" eval="False"/>
+        <field name="sequence">4</field>
+    </record>
+
+
+    <record id="quiz_q8" model="slide.question">
+        <field name="slide_id" ref="slide_quiz"/>
+        <field name="question">Gilt das Branding pro Benutzer?</field>
+    </record>
+
+
+    <record id="quiz_q8_a1" model="slide.answer">
+        <field name="question_id" ref="quiz_q8"/>
+        <field name="text_value">Ja, jeder Benutzer hat sein eigenes Briefpapier</field>
+        <field name="is_correct" eval="False"/>
+        <field name="sequence">1</field>
+    </record>
+
+
+    <record id="quiz_q8_a2" model="slide.answer">
+        <field name="question_id" ref="quiz_q8"/>
+        <field name="text_value">Nein, es gilt pro Unternehmen (Firma in Odoo)</field>
+        <field name="is_correct" eval="True"/>
+        <field name="sequence">2</field>
+    </record>
+
+
+    <record id="quiz_q8_a3" model="slide.answer">
+        <field name="question_id" ref="quiz_q8"/>
+        <field name="text_value">Nur für den Administrator</field>
+        <field name="is_correct" eval="False"/>
+        <field name="sequence">3</field>
+    </record>
+
+
+    <record id="quiz_q8_a4" model="slide.answer">
+        <field name="question_id" ref="quiz_q8"/>
+        <field name="text_value">Nur für archivierte Firmen</field>
+        <field name="is_correct" eval="False"/>
+        <field name="sequence">4</field>
+    </record>
+
+
+    <record id="res_vid_01" model="slide.slide.resource">
+        <field name="slide_id" ref="slide_art_01"/>
+        <field name="resource_type">file</field>
+        <field name="name">Video: Die Einstellungen finden</field>
+        <field name="file_name">01_einstellungen_finden.mp4</field>
+        <field name="data" type="base64" file="company_report_branding_elearning/static/src/video/01_einstellungen_finden.mp4"/>
+    </record>
+
+
+    <record id="res_vid_02" model="slide.slide.resource">
+        <field name="slide_id" ref="slide_art_05"/>
+        <field name="resource_type">file</field>
+        <field name="name">Video: Felder, Schriften, Logo und Fußzeile</field>
+        <field name="file_name">02_felder_erklaeren.mp4</field>
+        <field name="data" type="base64" file="company_report_branding_elearning/static/src/video/02_felder_erklaeren.mp4"/>
+    </record>
+
+
+    <record id="res_vid_03" model="slide.slide.resource">
+        <field name="slide_id" ref="slide_art_07"/>
+        <field name="resource_type">file</field>
+        <field name="name">Video: PDF prüfen</field>
+        <field name="file_name">03_pdf_pruefen.mp4</field>
+        <field name="data" type="base64" file="company_report_branding_elearning/static/src/video/03_pdf_pruefen.mp4"/>
+    </record>
+
+</odoo>

@@ -115,6 +115,16 @@ Volles **Corporate Design** für PDF-Berichte pro Firma: Briefpapier-PDF hochlad
 
 ---
 
+## Anwenderdokumentation / eLearning
+
+Schulungsunterlagen für allgemeine Benutzer (Deutsch, mit Screenshots und Videos):
+
+- **Handbuch (PDF):** [`docs/user_guide/Company_Report_Branding_Benutzerhandbuch.pdf`](docs/user_guide/Company_Report_Branding_Benutzerhandbuch.pdf)
+- **Übersicht:** [`docs/README.md`](docs/README.md)
+- **Odoo-Kurs:** optionales Addon [`company_report_branding_elearning`](company_report_branding_elearning/README.md) (App eLearning)
+
+---
+
 ## Support
 
 Commercial services and ERP projects: [https://www.mpi-erp.at](https://www.mpi-erp.at)

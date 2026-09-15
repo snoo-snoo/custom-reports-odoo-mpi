@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8"/>
+  <title>Company Report Branding – Benutzerhandbuch</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 16mm 15mm 18mm 15mm;
+      @bottom-center {
+        content: "Company Report Branding  ·  MPI GmbH  ·  Seite " counter(page);
+        font-size: 8.5pt;
+        color: #6c757d;
+        font-family: "DejaVu Sans", sans-serif;
+      }
+    }
+    @page :first {
+      margin: 0;
+      @bottom-center { content: none; }
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      font-family: "DejaVu Sans", "Liberation Sans", sans-serif;
+      font-size: 10.5pt;
+      line-height: 1.45;
+      color: #212529;
+    }
+    h1 { font-size: 20pt; color: #1a365d; margin: 0 0 0.4em; page-break-after: avoid; }
+    h2 { font-size: 14.5pt; color: #1a365d; margin: 1.4em 0 0.45em; border-bottom: 2px solid #714B67; padding-bottom: 0.2em; page-break-after: avoid; }
+    h3 { font-size: 12pt; color: #714B67; margin: 1.1em 0 0.35em; page-break-after: avoid; }
+    p { margin: 0.4em 0 0.55em; }
+    ul, ol { margin: 0.3em 0 0.7em 1.2em; }
+    li { margin: 0.18em 0; }
+    a { color: #714B67; }
+    .cover {
+      min-height: 297mm;
+      padding: 28mm 18mm 18mm;
+      background: linear-gradient(165deg, #1a365d 0%, #2c5282 42%, #714B67 100%);
+      color: #fff;
+      page-break-after: always;
+    }
+    .cover h1 { color: #fff; font-size: 32pt; line-height: 1.15; border: 0; margin-top: 18mm; }
+    .cover .kicker { letter-spacing: 0.18em; text-transform: uppercase; font-size: 10pt; opacity: 0.85; }
+    .cover .lead { font-size: 13.5pt; max-width: 150mm; margin-top: 8mm; line-height: 1.5; opacity: 0.95; }
+    .cover .meta { margin-top: 28mm; font-size: 10.5pt; opacity: 0.9; }
+    .cover .meta strong { display: inline-block; min-width: 38mm; }
+    .cover .badge {
+      display: inline-block; background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.35); padding: 4px 12px; border-radius: 999px;
+      font-size: 9pt; margin-right: 6px;
+    }
+    .toc { page-break-after: always; }
+    .toc ol { font-size: 11pt; }
+    figure { margin: 0.7em 0 1em; page-break-inside: avoid; }
+    figcaption { font-size: 8.5pt; color: #6c757d; margin-top: 0.3em; font-style: italic; }
+    img.shot {
+      width: 100%;
+      border: 1px solid #dee2e6;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    img.shot-narrow { width: 92%; }
+    .step {
+      background: #f8f5f7;
+      border-left: 5px solid #714B67;
+      padding: 8px 12px;
+      margin: 0.7em 0;
+      page-break-inside: avoid;
+    }
+    .step strong { color: #714B67; }
+    .tip, .warn, .note {
+      padding: 8px 12px; margin: 0.7em 0; border-radius: 4px; page-break-inside: avoid;
+    }
+    .tip { background: #eef8f0; border: 1px solid #b7dfc1; }
+    .warn { background: #fff6e8; border: 1px solid #f0d9a8; }
+    .note { background: #eef3fb; border: 1px solid #c5d4ea; }
+    .label {
+      display: inline-block; background: #f1e9ef; color: #4a3044;
+      padding: 1px 7px; border-radius: 3px; font-size: 9.5pt; font-weight: 600;
+    }
+    table.fields { width: 100%; border-collapse: collapse; margin: 0.6em 0 1em; font-size: 9.5pt; }
+    table.fields th { background: #1a365d; color: #fff; text-align: left; padding: 5px 8px; }
+    table.fields td { border: 1px solid #dee2e6; padding: 5px 8px; vertical-align: top; }
+    table.fields tr:nth-child(even) td { background: #f8f9fa; }
+    .two-col { display: table; width: 100%; }
+    .two-col > div { display: table-cell; width: 48%; vertical-align: top; }
+    .two-col > div + div { padding-left: 4%; }
+    .check { list-style: none; margin-left: 0; padding-left: 0; }
+    .check li:before { content: "☐  "; }
+    footer.mod { font-size: 8.5pt; color: #6c757d; margin-top: 2em; }
+  </style>
+</head>
+<body>
+
+<section class="cover">
+  <p class="kicker">Odoo 19 &nbsp;·&nbsp; Schulungsunterlage &nbsp;·&nbsp; E-Learning</p>
+  <p>
+    <span class="badge">Benutzerhandbuch</span>
+    <span class="badge">ohne Technik-Vorkenntnisse</span>
+    <span class="badge">Version 19.0.1.2</span>
+  </p>
+  <h1>Company Report Branding</h1>
+  <p class="lead">
+    So gestalten Sie Angebote, Lieferscheine, Bestellungen und Rechnungen
+    im Erscheinungsbild Ihrer Firma – Schritt für Schritt, mit Bildern.
+  </p>
+  <p class="meta">
+    <strong>Modul</strong> Company Report Branding<br/>
+    <strong>Hersteller</strong> MPI GmbH, Michael Plöckinger<br/>
+    <strong>Web</strong> www.mpi-erp.at<br/>
+    <strong>Zielgruppe</strong> Administration / Büroleitung, keine Programmierkenntnisse nötig<br/>
+    <strong>Stand</strong> September 2026
+  </p>
+</section>
+
+<section class="toc">
+  <h1>Inhalt</h1>
+  <ol>
+    <li>Worum geht es? (in zwei Minuten)</li>
+    <li>Was Sie vorher wissen sollten</li>
+    <li>Die Einstellungen finden</li>
+    <li>Welche Dokumente sollen Ihr Design bekommen?</li>
+    <li>Briefpapier hochladen und Ränder einstellen</li>
+    <li>Schriften für Überschriften und Text</li>
+    <li>Logo und Fußzeile</li>
+    <li>Texte über und unter den Positionen</li>
+    <li>Ergebnis prüfen: PDF ansehen</li>
+    <li>Typische Alltagssituationen</li>
+    <li>Häufige Fragen</li>
+    <li>Checkliste zum Go-Live</li>
+    <li>Dieses Handbuch als E-Learning-Kurs in Odoo</li>
+  </ol>
+  <div class="note">
+    <strong>Hinweis zur Sprache in den Bildern.</strong>
+    Die Navigationsbilder zeigen eine deutsche Odoo-Oberfläche
+    (Einstellungen, Berichte&nbsp;(CI), Briefpapier).
+    Einzelne Feldnamen des Moduls können zusätzlich englisch erscheinen
+    (z. B. <span class="label">Letterhead PDF</span>, <span class="label">Heading font</span>) –
+    in diesem Handbuch steht jeweils die deutsche Bedeutung daneben.
+  </div>
+</section>
+
+<h2>1. Worum geht es? (in zwei Minuten)</h2>
+<p>
+  Odoo erzeugt automatisch PDF-Dateien: Angebote, Aufträge, Lieferscheine,
+  Einkaufsbestellungen, Rechnungen und Gutschriften. Ohne Zusatzmodul sehen diese
+  Dokumente nach „Standard-Odoo“ aus – Logo oben, Fußzeile unten, Schrift wie im Layout.
+</p>
+<p>
+  <strong>Company Report Branding</strong> gibt jeder Firma in Odoo ein eigenes
+  Erscheinungsbild für genau diese PDFs. Sie stellen das einmal in den Firmeneinstellungen
+  ein. Danach gilt es automatisch, sobald jemand ein Dokument druckt oder per E-Mail als PDF sendet.
+</p>
+<p>Das können Sie damit steuern:</p>
+<ul>
+  <li><strong>Briefpapier</strong> – Ihr DIN-A4-Hintergrund (Logo, Rahmen, Farbflächen)</li>
+  <li><strong>Ränder</strong> – damit der Text nicht ins Briefpapier läuft</li>
+  <li><strong>Schriften</strong> – Überschriften und Fließtext getrennt</li>
+  <li><strong>Logo</strong> – Standardlogo, eigenes Berichtslogo, oder gar kein Logo (wenn es schon auf dem Briefpapier steht)</li>
+  <li><strong>Fußzeile</strong> – Odoo-Standard, eigener HTML-Text, oder leer</li>
+  <li><strong>Hinweistexte</strong> – feste Sätze über oder unter der Positionstabelle, je Dokumentart</li>
+  <li><strong>Welche Dokumente</strong> – Häkchen, ob z. B. nur Rechnungen oder auch Angebote das Design bekommen</li>
+</ul>
+<figure>
+  <img class="shot" src="screenshots/01_startseite.png" alt="Odoo Startseite mit den Apps"/>
+  <figcaption>Abb. 1 – Nach dem Anmelden sehen Sie die Odoo-Startseite. Die Gestaltung der PDFs stellen Sie unter Einstellungen ein, nicht in Verkauf oder Rechnungsstellung.</figcaption>
+</figure>
+
+<h2>2. Was Sie vorher wissen sollten</h2>
+<h3>Wer darf das einstellen?</h3>
+<p>
+  Nur Benutzer mit Administrationsrechten (Gruppe „Einstellungen“).
+  Sachbearbeiter im Verkauf oder in der Buchhaltung drucken danach ganz normal –
+  sie müssen nichts extra lernen, außer dass die PDFs anders aussehen.
+</p>
+<h3>Pro Firma, nicht pro Benutzer</h3>
+<p>
+  Die Einstellungen hängen am <strong>Unternehmen</strong>. Haben Sie mehrere Firmen
+  in derselben Datenbank, kann jede ihr eigenes Briefpapier bekommen.
+</p>
+<h3>Zwei getrennte Stellschrauben</h3>
+<p>
+  Odoo hat bereits unter Einstellungen den Dialog
+  <span class="label">Configure Document Layout</span> (Dokumentlayout).
+  Dort wählen Sie das grobe Layout (Light, Boxed, Bold …), Farben und die Standard-Fußzeile.
+</p>
+<p>
+  <strong>Company Report Branding</strong> sitzt daneben, im Reiter der Firma.
+  Es übersteuert Logo, Fußzeile, Schriften und legt optional Ihr Briefpapier als Hintergrund.
+  Beide Stellen ergänzen sich: zuerst Layout wählen, dann CI-Feinschliff.
+</p>
+<figure>
+  <img class="shot" src="screenshots/16_dokumentlayout.png" alt="Odoo-Dialog Dokumentlayout mit Vorschau"/>
+  <figcaption>Abb. 2 – Das Standard-Dokumentlayout von Odoo (hier: Light). Diesen Dialog finden Sie unter Einstellungen → Companies → Configure Document Layout. Das Branding-Modul kommt zusätzlich dazu.</figcaption>
+</figure>
+<div class="warn">
+  <strong>Bitte nicht verwechseln.</strong>
+  Der Odoo-Muster-Katalog „Check a sample“ erzeugt ein aufwendig gestaltetes
+  Marketing-PDF mit mehreren Seiten. Das ist die Funktion <em>PDF-Angebotsdesigner</em>
+  und nicht dasselbe wie Company Report Branding. Branding wirkt auf die
+  „klassische“ Berichtsseite mit Adresse, Positionstabelle und Summe.
+</div>
+
+<h2>3. Die Einstellungen finden</h2>
+<p>Gehen Sie immer denselben Weg. Nach zwei Mal ist er Routine.</p>
+<div class="step">
+  <strong>Schritt 1.</strong> Öffnen Sie die App <strong>Einstellungen</strong> auf der Startseite.
+</div>
+<figure>
+  <img class="shot" src="screenshots/02_einstellungen.png" alt="Allgemeine Einstellungen mit Bereich Unternehmen"/>
+  <figcaption>Abb. 3 – Allgemeine Einstellungen. Im Kasten Unternehmen sehen Sie Ihre Firma sowie Info aktualisieren und Unternehmen verwalten.</figcaption>
+</figure>
+<div class="step">
+  <strong>Schritt 2.</strong> Im Abschnitt <strong>Unternehmen</strong> klicken Sie auf
+  <strong>Unternehmen verwalten</strong> – oder direkt auf
+  <strong>Info aktualisieren</strong>, wenn nur eine Firma existiert.
+</div>
+<figure>
+  <img class="shot" src="screenshots/03_unternehmen_liste.png" alt="Liste der Unternehmen"/>
+  <figcaption>Abb. 4 – Die Firmenliste. Klicken Sie auf den Namen Ihrer Firma (hier: My Company).</figcaption>
+</figure>
+<div class="step">
+  <strong>Schritt 3.</strong> Es öffnet sich die Firmenkarte. Oben gibt es Reiter.
+  Klicken Sie auf <span class="label">Berichte (CI)</span>.
+</div>
+<figure>
+  <img class="shot shot-narrow" src="screenshots/04_unternehmen_formular.png" alt="Firmenformular mit Reiter Berichte (CI)"/>
+  <figcaption>Abb. 5 – Firmenkarte. Der dritte Reiter heißt Berichte (CI). Genau dort gehört die gesamte Gestaltung hin.</figcaption>
+</figure>
+<div class="tip">
+  <strong>Merksatz:</strong> Einstellungen → Unternehmen → Ihre Firma → Reiter Berichte (CI).
+  Speichern Sie am Ende immer mit <strong>Speichern</strong> oben links.
+  Ein Wolkensymbol neben dem Firmennamen bedeutet: Es gibt ungespeicherte Änderungen.
+</div>
+
+<h2>4. Welche Dokumente sollen Ihr Design bekommen?</h2>
+<p>
+  Ganz oben auf dem Reiter steht
+  <span class="label">Apply branding on these reports</span>
+  (CI auf diese Berichte anwenden).
+  Jedes Häkchen schaltet das Corporate Design für eine Dokumentfamilie ein oder aus.
+</p>
+<figure>
+  <img class="shot shot-narrow" src="screenshots/05_reiter_berichte_ci.png" alt="Häkchen für Dokumentarten und Briefpapier"/>
+  <figcaption>Abb. 6 – Oben „CI auf diese Berichte anwenden“, darunter Briefpapier. Standardmäßig sind alle Häkchen gesetzt.</figcaption>
+</figure>
+<table class="fields">
+  <thead>
+    <tr><th>Feld (Englisch)</th><th>Deutsch</th><th>Betrifft</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Sales quotations &amp; orders</td><td>Verkaufsangebote &amp; Aufträge</td><td>Angebot und Kundenauftrag</td></tr>
+    <tr><td>Deliveries / pickings</td><td>Lieferungen / Entnahmen</td><td>Lieferschein</td></tr>
+    <tr><td>Purchase orders</td><td>Einkaufsaufträge</td><td>Bestellung an Lieferanten</td></tr>
+    <tr><td>Customer invoices</td><td>Kundenrechnungen</td><td>Ausgangsrechnung</td></tr>
+    <tr><td>Customer credit notes</td><td>Kundengutschriften</td><td>Gutschrift an Kunden</td></tr>
+    <tr><td>Vendor bills &amp; refunds</td><td>Lieferantenrechnungen &amp; Erstattungen</td><td>Eingangsrechnung und Lieferantengutschrift</td></tr>
+    <tr><td>All other PDF reports</td><td>Alle übrigen PDF-Berichte</td><td>alles andere mit Odoo-Standardlayout, inkl. Layout-Vorschau</td></tr>
+  </tbody>
+</table>
+<div class="tip">
+  <strong>Praxisbeispiel.</strong>
+  Manche Firmen wollen das Briefpapier nur auf Kunden-PDFs (Angebot, Lieferschein, Rechnung),
+  aber nicht auf Einkaufsbestellungen. Dann Häkchen bei Purchase orders entfernen und speichern.
+</div>
+
+<h2>5. Briefpapier hochladen und Ränder einstellen</h2>
+<h3>Was ist „Briefpapier“ hier?</h3>
+<p>
+  Eine PDF-Datei im Format DIN A4, so wie Sie sie vom Grafiker oder aus Word/InDesign
+  exportieren: Logo, farbiger Kopf, Adressfeld-Markierung, Fußgestaltung.
+  Odoo verwendet die <strong>erste Seite</strong> als Hintergrundbild für den Bericht.
+</p>
+<div class="step">
+  <strong>Schritt 1.</strong> Bei <span class="label">Letterhead PDF</span> (Briefpapier-PDF)
+  auf <strong>Upload your file</strong> klicken und die PDF wählen.
+</div>
+<div class="step">
+  <strong>Schritt 2.</strong> Häkchen setzen bei
+  <span class="label">Use letterhead on reports</span>
+  (Briefpapier auf Berichten verwenden).
+  Ohne dieses Häkchen liegt die Datei nur bereit, erscheint aber nicht auf den PDFs.
+</div>
+<div class="step">
+  <strong>Schritt 3.</strong> Die vier <strong>Content margin</strong>-Felder (Inhaltsränder in Millimetern)
+  so einstellen, dass der Dokumenttext nicht in Logo oder Zierleisten läuft.
+</div>
+<table class="fields">
+  <thead>
+    <tr><th>Feld</th><th>Vorschlag zum Start</th><th>Wann höher drehen?</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Content margin top (mm)</td><td>35</td><td>großes Logo oder Kopfleiste oben</td></tr>
+    <tr><td>Content margin bottom (mm)</td><td>25</td><td>Bankzeile / QR / Grafik unten</td></tr>
+    <tr><td>Content margin left (mm)</td><td>20</td><td>farbiger Seitenstreifen links</td></tr>
+    <tr><td>Content margin right (mm)</td><td>20</td><td>farbiger Seitenstreifen rechts</td></tr>
+  </tbody>
+</table>
+<div class="warn">
+  <strong>Wichtig.</strong>
+  Das Briefpapier wird als Bild hinter den Text gelegt (kein „echtes“ PDF-unter-PDF).
+  Feine Vektorlinien können dadurch etwas weicher wirken. Für den Alltag (Angebot, Rechnung)
+  ist das völlig ausreichend. Testen Sie einmal mit einem echten Dokument, bevor Sie 500 Rechnungen versenden.
+</div>
+<div class="note">
+  <strong>Logo schon auf dem Briefpapier?</strong>
+  Dann später bei Report logo den Modus <em>Hide logo</em> wählen,
+  sonst erscheint das Logo doppelt.
+  Dasselbe gilt für die Fußzeile: steht die Adresse schon im Briefpapier, Fußzeile auf
+  <em>No footer text</em> stellen.
+</div>
+
+<h2>6. Schriften für Überschriften und Text</h2>
+<p>
+  Unter <span class="label">Fonts</span> (Schriften) gibt es zwei Spalten:
+  <strong>Heading</strong> (Überschriften wie „Quotation“, „Invoice“) und
+  <strong>Body</strong> (übriger Text, Tabellen).
+  Beide können Sie unabhängig wählen.
+</p>
+<figure>
+  <img class="shot shot-narrow" src="screenshots/07_schrift_dropdown.png" alt="Auswahl der Überschrift-Schrift"/>
+  <figcaption>Abb. 7 – Drei Quellen für die Überschrift-Schrift: Odoo-Layout, Google Font oder Datei-Upload.</figcaption>
+</figure>
+<h3>Option A – Odoo layout / theme</h3>
+<p>
+  Nichts Extra. Es bleibt die Schrift, die zum gewählten Dokumentlayout gehört
+  (im Layout-Dialog oft „Lato“ o. ä.). Das ist der sichere Standard.
+</p>
+<h3>Option B – Google Font</h3>
+<p>
+  Wählen Sie <span class="label">Google Font</span>. Es erscheint das Feld
+  <span class="label">Heading Google Font family</span> bzw. Body.
+  Tragen Sie den <strong>exakten Familiennamen</strong> ein, z. B. <em>Roboto</em>,
+  <em>Open Sans</em>, <em>Montserrat</em> – so wie auf fonts.google.com.
+</p>
+<figure>
+  <img class="shot shot-narrow" src="screenshots/08_google_font.png" alt="Feld Google Font family"/>
+  <figcaption>Abb. 8 – Nach der Wahl von Google Font erscheint das Namensfeld. Ohne Namen ändert sich optisch nichts.</figcaption>
+</figure>
+<div class="warn">
+  <strong>Voraussetzung.</strong>
+  Der Server, der die PDFs erzeugt, muss das Internet erreichen können
+  (fonts.googleapis.com). In stark abgeschotteten Netzen besser Option C verwenden.
+</div>
+<h3>Option C – Uploaded font file</h3>
+<p>
+  Wählen Sie <span class="label">Uploaded font file</span> und laden Sie eine Schriftdatei hoch
+  (üblich: <strong>.ttf</strong>, <strong>.otf</strong>, <strong>.woff</strong>, <strong>.woff2</strong>).
+  Klären Sie mit Ihrer Grafik, ob die Lizenz die Einbettung in Kunden-PDFs erlaubt.
+</p>
+<figure>
+  <img class="shot shot-narrow" src="screenshots/09_schrift_upload.png" alt="Upload-Schaltfläche für Schriftdatei"/>
+  <figcaption>Abb. 9 – Eigene Schriftdatei für Überschriften. Denselben Weg gibt es rechts für den Fließtext.</figcaption>
+</figure>
+
+<h2>7. Logo und Fußzeile</h2>
+<h3>Report logo</h3>
+<figure>
+  <img class="shot shot-narrow" src="screenshots/10_logo_dropdown.png" alt="Dropdown Report logo"/>
+  <figcaption>Abb. 10 – Drei Logo-Modi.</figcaption>
+</figure>
+<table class="fields">
+  <thead>
+    <tr><th>Modus</th><th>Wirkung</th><th>Wann wählen?</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Company logo (standard)</td><td>Das Logo von der Firmenkarte</td><td>Normalfall, ein Logo für alles</td></tr>
+    <tr><td>Hide logo</td><td>Kein Logo im Berichtskopf</td><td>Logo steckt schon im Briefpapier</td></tr>
+    <tr><td>Custom report logo</td><td>Eigenes Bild nur für PDFs</td><td>Drucklogo in höherer Auflösung oder ohne Claim</td></tr>
+  </tbody>
+</table>
+<figure>
+  <img class="shot shot-narrow" src="screenshots/11_logo_benutzerdefiniert.png" alt="Upload eigenes Berichtslogo"/>
+  <figcaption>Abb. 11 – Bei Custom report logo muss eine Datei hochgeladen werden. Sonst lässt Odoo das Speichern nicht zu.</figcaption>
+</figure>
+<h3>Report footer</h3>
+<figure>
+  <img class="shot shot-narrow" src="screenshots/12_fusszeile_dropdown.png" alt="Dropdown Report footer"/>
+  <figcaption>Abb. 12 – Drei Fußzeilen-Modi.</figcaption>
+</figure>
+<table class="fields">
+  <thead>
+    <tr><th>Modus</th><th>Wirkung</th><th>Wann wählen?</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Standard Odoo footer</td><td>Text aus dem Dokumentlayout (Telefon, Bank, UID …)</td><td>Sie pflegen die Fußzeile zentral im Layout-Dialog</td></tr>
+    <tr><td>Custom HTML footer</td><td>Eigener formatierter Text nur für Berichte</td><td>Sie brauchen Fettdruck, Links oder eine andere Zeile als im Layout</td></tr>
+    <tr><td>No footer text (letterhead / minimal)</td><td>Kein Textblock unten</td><td>Briefpapier enthält Adresse und Bank bereits</td></tr>
+  </tbody>
+</table>
+<figure>
+  <img class="shot shot-narrow" src="screenshots/13_fusszeile_html.png" alt="Feld Custom footer HTML"/>
+  <figcaption>Abb. 13 – Custom HTML footer blendet das Textfeld ein. Leer speichern geht nicht – Odoo verlangt Inhalt.</figcaption>
+</figure>
+<div class="note">
+  <strong>Kleine Linie unten auf der Seite.</strong>
+  Manche Layouts (z. B. Bubble) zeichnen trotzdem eine Trennlinie. „Kein Fußzeilentext“
+  entfernt den Text, nicht unbedingt jede grafische Linie des Themes.
+</div>
+
+<h2>8. Texte über und unter den Positionen</h2>
+<p>
+  Unten auf dem Reiter:
+  <span class="label">Default texts near line tables (HTML)</span>
+  (Standardtexte bei Positionstabellen).
+  Das sind <strong>wiederkehrende Hinweise</strong>, die auf jedem PDF dieser Art erscheinen –
+  unabhängig vom einzelnen Angebot.
+</p>
+<figure>
+  <img class="shot shot-narrow" src="screenshots/14_texte_positionen.png" alt="Felder für Texte über und unter den Positionen"/>
+  <figcaption>Abb. 14 – Standardtexte bei Positionstabellen: über und unter den Zeilen, getrennt nach Belegart (hier Angebot und Lieferschein).</figcaption>
+</figure>
+<figure>
+  <img class="shot shot-narrow" src="screenshots/15_texte_alle_dokumente.png" alt="Weitere Dokumenttypen für Hinweistexte"/>
+  <figcaption>Abb. 15 – Jede Belegart hat „above lines“ (über der Tabelle) und „below lines“ (unter der Tabelle).</figcaption>
+</figure>
+<p>Beispiele, die in der Praxis oft gebraucht werden:</p>
+<ul>
+  <li><strong>Über den Positionen (Angebot):</strong> „Preise in EUR, netto, zzgl. gesetzlicher USt.“</li>
+  <li><strong>Unter den Positionen (Angebot):</strong> „Dieses Angebot gilt 14 Tage. Montage nicht enthalten.“</li>
+  <li><strong>Unter den Positionen (Rechnung):</strong> „Zahlbar innerhalb von 14 Tagen ohne Abzug. Es gelten unsere AGB.“</li>
+  <li><strong>Unter den Positionen (Lieferschein):</strong> „Bitte prüfen Sie die Lieferung unverzüglich auf Vollständigkeit.“</li>
+</ul>
+<div class="tip">
+  <strong>HTML heißt:</strong> Sie dürfen im Editor Fett, Listen und Absätze verwenden.
+  Keine ganzen Webseiten einfügen – kurze, klare Blöcke lesen sich auf dem PDF am besten.
+  Die Texte sind übersetzbar, falls Sie mehrsprachig anbieten.
+</div>
+<div class="note">
+  Diese Blöcke ersetzen nicht die Bemerkung auf dem einzelnen Beleg
+  (Feld „Terms and Conditions“ / Kundennotiz). Beides kann kombiniert werden:
+  der Firmen-Standardtext immer, plus eine individuelle Notiz am Auftrag.
+</div>
+
+<h2>9. Ergebnis prüfen: PDF ansehen</h2>
+<p>Nach dem Speichern prüfen Sie mit einem echten Beleg – nicht nur mit der Layout-Vorschau.</p>
+<div class="step">
+  <strong>Schritt 1.</strong> Öffnen Sie z. B. <strong>Sales → Quotations</strong> (Verkauf → Angebote)
+  und ein vorhandenes Angebot – oder legen Sie ein kurzes Testangebot an.
+</div>
+<div class="step">
+  <strong>Schritt 2.</strong> Drucken bzw. Vorschau: oft über das Zahnrad / <strong>Print</strong>
+  bzw. <strong>Vorschau</strong>. Es öffnet sich das PDF.
+</div>
+<figure>
+  <img class="shot" src="screenshots/17_angebot_pdf.png" alt="PDF-Vorschau eines Angebots mit Positionstabelle"/>
+  <figcaption>Abb. 16 – Klassische Angebotsseite: Logo, Adressen, Positionen, Summe. Genau diese Seite nimmt Briefpapier, Schriften, Logo- und Fußzeilenmodus auf.</figcaption>
+</figure>
+<p>Kontrollieren Sie nacheinander:</p>
+<ol>
+  <li>Sitzt der Text klar neben Logo und Briefpapier-Grafik?</li>
+  <li>Erscheint das Logo einmal – nicht doppelt?</li>
+  <li>Ist die Fußzeile vollständig und lesbar (oder bewusst leer)?</li>
+  <li>Stimmen Überschrift- und Textschrift?</li>
+  <li>Stehen die Standardtexte an der richtigen Stelle über/unter der Tabelle?</li>
+  <li>Zweite Seite: läuft nichts in den unteren Rand?</li>
+</ol>
+<div class="warn">
+  <strong>Mehrseitige Dokumente.</strong>
+  Das Briefpapier basiert auf der ersten PDF-Seite Ihrer Vorlage und wird als Hintergrund verwendet.
+  Prüfen Sie immer auch Seite 2 eines langen Angebots.
+</div>
+
+<h2>10. Typische Alltagssituationen</h2>
+<h3>„Wir haben schon ein schönes Briefpapier – Odoo soll nichts dazwischenfunken.“</h3>
+<ol>
+  <li>Letterhead PDF hochladen, Use letterhead aktivieren.</li>
+  <li>Ränder großzügig (oben oft 40–50 mm testen).</li>
+  <li>Report logo = Hide logo.</li>
+  <li>Report footer = No footer text.</li>
+  <li>Schriften: entweder Theme belassen oder Ihre Hausschrift per Upload.</li>
+</ol>
+<h3>„Wir wollen nur die Hausschrift, kein Briefpapier.“</h3>
+<ol>
+  <li>Use letterhead ausgeschaltet lassen.</li>
+  <li>Heading und Body auf Google Font oder Upload.</li>
+  <li>Logo und Fußzeile auf Standard lassen.</li>
+</ol>
+<h3>„Rechnungen ja, interne Lieferscheine möglichst schlicht.“</h3>
+<p>
+  Häkchen bei Customer invoices an, bei Deliveries / pickings aus.
+  Lieferscheine bleiben dann im normalen Odoo-Layout.
+</p>
+<h3>„Jede Niederlassung hat ein anderes Logo.“</h3>
+<p>
+  Für jedes Unternehmen den Reiter Berichte (CI) getrennt pflegen.
+  Benutzer, die die Firma wechseln, bekommen automatisch das passende PDF.
+</p>
+
+<h2>11. Häufige Fragen</h2>
+<p><strong>Ich sehe den Reiter Report branding nicht.</strong><br/>
+Sie sind nicht Administrator, oder das Modul ist nicht installiert.
+Apps → nach „Company Report Branding“ suchen → Activate. Danach die Firmenkarte neu öffnen.</p>
+<p><strong>Ich habe gespeichert, das PDF sieht aber noch alt aus.</strong><br/>
+Browser-PDF-Cache oder altes heruntergeladenes File. Beleg neu öffnen und erneut drucken.
+Prüfen Sie außerdem, ob das Häkchen für genau diese Belegart gesetzt ist
+und ob Use letterhead aktiv ist.</p>
+<p><strong>Odoo sagt, die Fußzeile bzw. das Logo fehlt.</strong><br/>
+Bei Custom HTML footer muss Text im HTML-Feld stehen.
+Bei Custom report logo muss eine Bilddatei hochgeladen sein.
+Das ist Absicht, damit keine leeren PDFs entstehen.</p>
+<p><strong>Google-Schrift erscheint nicht im PDF.</strong><br/>
+Name prüfen (Groß/Kleinschreibung, z. B. „Open Sans“ nicht „Opensans“).
+Falls der PDF-Dienst keinen Internetzugang hat: Schriftdatei hochladen.</p>
+<p><strong>Wirkt das auch auf Excel-Exporte?</strong><br/>
+Nein. Nur auf PDF-Berichte, die das externe Odoo-Layout verwenden.</p>
+<p><strong>Kann ich pro Kunde ein anderes Briefpapier hinterlegen?</strong><br/>
+Nein – die Gestaltung hängt an der Firma (res.company), nicht am Kontakt.
+Für mehrere Marken legen Sie in Odoo mehrere Unternehmen an oder sprechen Sie uns auf eine Erweiterung an.</p>
+<p><strong>Support</strong><br/>
+Kommerzielle Betreuung: <a href="https://www.mpi-erp.at">www.mpi-erp.at</a></p>
+
+<h2>12. Checkliste zum Go-Live</h2>
+<ul class="check">
+  <li>Administrationszugang vorhanden</li>
+  <li>Dokumentlayout (Light/Boxed/…) gewählt und Standardfußzeile gefüllt</li>
+  <li>Briefpapier-PDF (A4) vom Grafiker erhalten</li>
+  <li>Briefpapier hochgeladen und „Use letterhead“ gesetzt – oder bewusst weggelassen</li>
+  <li>Ränder an einem Testdokument justiert</li>
+  <li>Logo-Modus gewählt (kein Doppel-Logo)</li>
+  <li>Fußzeilen-Modus gewählt</li>
+  <li>Schriften getestet</li>
+  <li>Häkchen je Belegart geprüft</li>
+  <li>Standardtexte über/unter Positionen formuliert</li>
+  <li>Test: Angebot, Lieferschein, Rechnung – jeweils Seite 1 und Seite 2</li>
+  <li>Eine Kollegin / ein Kollege hat das PDF gegengelesen</li>
+  <li>Save bestätigt, Testdatenbank oder Testdokument archiviert</li>
+</ul>
+
+<h2>13. Dieses Handbuch als E-Learning-Kurs in Odoo</h2>
+<p>
+  Sie können denselben Stoff in der Odoo-App <strong>eLearning</strong> (website_slides)
+  als Kurs bereitstellen. Zwei Wege:
+</p>
+<h3>Weg A – Fertiges Kursmodul installieren</h3>
+<p>
+  Das optionale Addon <span class="label">company_report_branding_elearning</span>
+  legt den Kurs „Company Report Branding – Anwendertraining“ an:
+  Lektionen als Artikel, dieses PDF zum Download, Videos als Zusatzmaterial, Abschlusstest.
+  Voraussetzung: App eLearning ist installiert.
+</p>
+<h3>Weg B – Kurs von Hand anlegen</h3>
+<ol>
+  <li>App <strong>eLearning</strong> installieren.</li>
+  <li>Neuer Kurs, Typ Training, Sichtbarkeit z. B. „Angemeldete Benutzer“.</li>
+  <li>Abschnitte anlegen wie im Inhaltsverzeichnis (Kapitel 1–12).</li>
+  <li>Inhaltstyp <strong>Dokument</strong>: diese PDF-Datei hochladen, Download erlauben.</li>
+  <li>Inhaltstyp <strong>Artikel</strong>: Texte aus den Lektionsdateien unter <em>docs/elearning/</em> kopieren.</li>
+  <li>Inhaltstyp <strong>Video</strong>: die MP4-Dateien aus <em>docs/user_guide/videos/</em>
+      bei YouTube, Vimeo oder Google Drive hinterlegen und die URL einfügen
+      (Odoo spielt lokale MP4 in eLearning typischerweise über diese Quellen ab).
+      Zusätzlich können Sie die Dateien als „Additional Resource“ zum Herunterladen anhängen.</li>
+  <li>Zum Schluss ein Quiz mit den Fragen aus <em>docs/elearning/quiz.md</em>.</li>
+</ol>
+<p>
+  Die Dateien liegen im Repository unter <strong>docs/</strong>.
+  Videos und PDF sind zum direkten Download für Schulungsteilnehmer gedacht.
+</p>
+
+<h2>Kurze technische Randnotiz (für IT, nicht nötig zum Bedienen)</h2>
+<ul>
+  <li>Odoo 19, technischer Name <em>company_report_branding</em>, Lizenz LGPL-3.</li>
+  <li>Für Briefpapier-Hintergrund wird die erste PDF-Seite gerastert (PyMuPDF / requirements.txt, empfohlen auf Odoo.sh).</li>
+  <li>Hochgeladene Schriften werden über eine geschützte Token-URL ausgeliefert.</li>
+  <li>Wirkt auf die gängigen externen Layouts: Light, Striped, Boxed, Bold, Folder, Wave, Bubble.</li>
+</ul>
+<p class="mod">
+  Teile des Moduls wurden mit Unterstützung von KI-Werkzeugen erstellt; Verantwortung für Prüfung, Test und Compliance: MPI GmbH.
+  Screenshots stammen von der Demo-Instanz (Odoo 19, englische Oberfläche). Angaben ohne Gewähr; Bedienung kann je nach Studio-Anpassungen leicht abweichen.
+</p>
+
+</body>
+</html>
